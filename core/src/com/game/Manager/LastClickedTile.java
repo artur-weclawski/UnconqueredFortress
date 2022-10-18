@@ -5,18 +5,10 @@ public class LastClickedTile {
     private int y;
     private String name;
 
-    public LastClickedTile () {
+    public LastClickedTile() {
         this.x = -1;
         this.y = -1;
         this.name = null;
-    }
-
-    public void cleanClick()
-    {
-    this.x = -1;
-    this.y = -1;
-    this.name = null;
-
     }
 
     public int getX() {

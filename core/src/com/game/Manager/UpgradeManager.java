@@ -390,14 +390,6 @@ public class UpgradeManager {
 
     }
 
-    public TextTooltip getTooltip() {
-        return tooltip;
-    }
-
-    public void setTooltip(TextTooltip tooltip) {
-        this.tooltip = tooltip;
-    }
-
     public UpgradeManager getThis() {
         return this;
     }
@@ -409,7 +401,6 @@ public class UpgradeManager {
         }
         return null;
     }
-
 
     private void loadUpgrades() {
 

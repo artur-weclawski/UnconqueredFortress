@@ -18,30 +18,21 @@ public class TowerManager {
 
     private boolean isDisabledListeners;
 
-    public TowerManager() {
-        towers = new ArrayList<>();
-
-
-    }
-
     public TowerManager(ArrayList<Enemy> enemies) {
         this.enemies = enemies;
         towers = new ArrayList<>();
         isDisabledListeners = false;
     }
 
-
     public void buyTower(Tower t) {
         towers.add(t);
     }
 
     public void sellTower(int x, int y) {
-
         towers.removeIf(t -> t.getTileX() == x && t.getTileY() == y);
     }
 
     public int getSellWorth(int x, int y) {
-
         for (Tower t : towers) {
             if (t.getTileX() == x && t.getTileY() == y) {
                 return t.getSellWorth();
@@ -52,7 +43,6 @@ public class TowerManager {
 
     public JSONArray getTowers() {
         JSONArray j = new JSONArray();
-
         for (Tower tower : towers) {
             JSONObject t = new JSONObject();
             t.put("name", tower.getName());
@@ -61,7 +51,6 @@ public class TowerManager {
             t.put("level", tower.getLvl());
             j.put(t);
         }
-
         return j;
     }
 
@@ -69,28 +58,19 @@ public class TowerManager {
         for (Tower t : towers) {
             if (Objects.equals(t.getName(), towerName))
                 t.refreshReload();
-
         }
     }
 
     public void update(float deltaTime) {
-
         for (Tower t : towers) {
             t.update(deltaTime, enemies);
-
         }
-
-
     }
 
     public void render(SpriteBatch spritebatch, ShapeRenderer shapeRenderer) {
-
         for (Tower t : towers) {
             t.render(spritebatch, shapeRenderer);
-
         }
-
-
     }
 
     public void disableListeners() {
@@ -106,7 +86,6 @@ public class TowerManager {
             t.enableListeners();
         }
     }
-
 
     public boolean getIsDisabledListeners() {
         return isDisabledListeners;

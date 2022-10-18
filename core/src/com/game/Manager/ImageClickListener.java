@@ -8,23 +8,15 @@ public class ImageClickListener extends ClickListener {
     private int y;
     private String name;
 
-    public ImageClickListener () {
-
-    }
-
     public ImageClickListener(int x, int y, String name) {
         this.x = x;
         this.y = y;
         this.name = name;
-
-
     }
 
-    public void setLastClickedTile(LastClickedTile lastClickedTile){
+    public void setLastClickedTile(LastClickedTile lastClickedTile) {
         lastClickedTile.setX(x);
         lastClickedTile.setY(y);
         lastClickedTile.setName(name);
     }
-
-
 }

@@ -7,7 +7,8 @@ import com.badlogic.gdx.utils.JsonValue;
 public class LanguageManager {
 
     private String language;
-    public LanguageManager(String language){
+
+    public LanguageManager(String language) {
         this.language = language;
     }
 
@@ -15,21 +16,17 @@ public class LanguageManager {
         return language;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public String getValue(String language, String name){
-        if(language.equals("English")){
+    public String getValue(String language, String name) {
+        if (language.equals("English")) {
             String jsonPath = "assets/english.json";
             JsonReader json = new JsonReader();
-            JsonValue base  = json.parse(Gdx.files.internal(jsonPath));
-            return  base.getString(name);
-        }else{
+            JsonValue base = json.parse(Gdx.files.internal(jsonPath));
+            return base.getString(name);
+        } else {
             String jsonPath = "assets/polski.json";
             JsonReader json = new JsonReader();
-            JsonValue base  = json.parse(Gdx.files.internal(jsonPath));
-            return  base.getString(name);
+            JsonValue base = json.parse(Gdx.files.internal(jsonPath));
+            return base.getString(name);
         }
     }
 }

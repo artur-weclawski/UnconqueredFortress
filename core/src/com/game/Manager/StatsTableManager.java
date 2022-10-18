@@ -139,17 +139,14 @@ public class StatsTableManager {
         statsTable.add(new Image(images_stats, "middleStatsCover"));
         statsTable.add(enemiesTextValue).width((200 * scale) / 2 - 6 * scale).padRight(2 * scale);
         statsTable.row().padBottom(4 * scale);
-        ;
         statsTable.add(goldTextField).width((200 * scale) / 2 - 6 * scale);
         statsTable.add(new Image(images_stats, "middleStatsCover"));
         statsTable.add(goldTextValue).width((200 * scale) / 2 - 6 * scale).padRight(2 * scale);
         statsTable.row().padBottom(4 * scale);
-        ;
         statsTable.add(diamondTextField).width((200 * scale) / 2 - 6 * scale);
         statsTable.add(new Image(images_stats, "middleStatsCover"));
         statsTable.add(diamondTextValue).width((200 * scale) / 2 - 6 * scale).padRight(2 * scale);
         statsTable.row().padBottom(4 * scale);
-        ;
         statsTable.add(difficultyTextField).width((200 * scale) / 2 - 6 * scale);
         statsTable.add(new Image(images_stats, "middleStatsCover"));
         statsTable.add(difficultyTextValue).width((200 * scale) / 2 - 6 * scale).padRight(2 * scale);
@@ -370,10 +367,7 @@ public class StatsTableManager {
         multipliersTable.add(multipliersTableTextFieldValue5).width((200 * scale) / 2 - 6 * scale).padRight(2 * scale);
         multipliersTable.row().padBottom(4 * scale);
 
-
         // Obstacle Table
-
-
         obstacleUses = new TextField(languageManager.getValue(languageManager.getLanguage(), "tLeft"), textFieldStyleManager.returnTextFieldStyle(leftStatsTextFieldStyle));
         obstacleUsesValue = new TextField(null, textFieldStyleManager.returnTextFieldStyle(rightStatsTextFieldStyle));
 
@@ -387,8 +381,6 @@ public class StatsTableManager {
         obstacleTable.add(new Image(images_stats, "middleStatsCover"));
         obstacleTable.add(obstacleUsesValue).width((200 * scale) / 2 - 6 * scale).padRight(2 * scale);
         obstacleTable.row().padBottom(4 * scale);
-
-
     }
 
     public int getInfoToDisplay() {
@@ -406,7 +398,6 @@ public class StatsTableManager {
 
     public void setButtonVisibility() {
         buttonUp.setVisible(multipliersPage != 0);
-
         buttonDown.setVisible(multipliersPage != 4);
     }
 
@@ -415,10 +406,6 @@ public class StatsTableManager {
         this.infoToDisplayName = name;
         this.infoToDisplayObjectNow = towerNow;
         this.infoToDisplayObjectUpgraded = towerUpgrade;
-    }
-
-    public int getMultipliersPage() {
-        return multipliersPage;
     }
 
     public void setMultipliersPage(int multipliersPage) {
@@ -459,7 +446,6 @@ public class StatsTableManager {
         JSONObject multipliers = base.getMultipliers();
 
         switch (choice) {
-            //languageManager.getValue(languageManager.getLanguage(), "")
             case 0 -> {
                 multipliersTableTitle.setText(languageManager.getValue(languageManager.getLanguage(), "tBase"));
                 multipliersTableTextField0.setText(languageManager.getValue(languageManager.getLanguage(), "hp_field"));
@@ -480,7 +466,6 @@ public class StatsTableManager {
                 multipliersTableTextField5.setVisible(false);
                 middleStatsCoverArr[5].setVisible(false);
                 multipliersTableTextFieldValue5.setVisible(false);
-
             }
 
             case 1 -> {
@@ -559,7 +544,6 @@ public class StatsTableManager {
                 multipliersTableTextField5.setVisible(false);
                 middleStatsCoverArr[5].setVisible(false);
                 multipliersTableTextFieldValue5.setVisible(false);
-
             }
             case 4 -> {
                 multipliersTableTitle.setText("Ekonomia");
@@ -586,16 +570,11 @@ public class StatsTableManager {
                 multipliersTableTextField5.setVisible(false);
                 middleStatsCoverArr[5].setVisible(false);
                 multipliersTableTextFieldValue5.setVisible(false);
-
             }
-
         }
-
-
     }
 
     public void setObstacleTable() {
-
         obstacleUsesValue.setText(String.valueOf(base.getUsesLeft()));
     }
 
@@ -618,7 +597,6 @@ public class StatsTableManager {
             upgradeRangeTextValue.setText((int) (towerNow.getFloat("range") * base.getMultipliers().getFloat("rangeMultiplier" + name)) + " -> " + (int) (towerUpgraded.getFloat("range") * base.getMultipliers().getFloat("rangeMultiplier" + name)));
             upgradeReloadTextValue.setText((int) towerNow.getFloat("reload") + " -> " + (int) towerUpgraded.getFloat("reload"));
             upgradeSplashTextValue.setText((int) towerNow.getFloat("splash") + " -> " + (int) towerUpgraded.getFloat("splash"));
-
         } else {
             upgradePriceTextValue.setText("---");
             upgradeLvlTextValue.setText(languageManager.getValue(languageManager.getLanguage(), "tMax"));
@@ -628,16 +606,6 @@ public class StatsTableManager {
             upgradeSplashTextValue.setText(String.valueOf((int) towerNow.getFloat("splash")));
         }
     }
-
-
-    public Table getOperationTable() {
-        return operationTable;
-    }
-
-    public Table getUpgradeTable() {
-        return upgradeTable;
-    }
-
 
     public void update() {
         hpTextValue.setText(String.valueOf(base.getHealth()));
@@ -649,7 +617,5 @@ public class StatsTableManager {
         if (infoToDisplay == 5) {
             obstacleUsesValue.setText(String.valueOf(base.getUsesLeft()));
         }
-
     }
-
 }
