@@ -328,12 +328,14 @@ public class MenuScreen implements Screen  {
                         }
 
                         tDialogLoginErrors.setText(null);
+                        tDialogLoginErrors.setVisible(false);
                         bLogin.setText(languageManager.getValue(languageManager.getLanguage(), "bLogout"));
                         game.setLogin(fDialogLoginLogin.getText());
                         game.setIsLogged(true);
                         isDialog = false;
                         menuDialog.hide();
                     } else {
+                        tDialogLoginErrors.setVisible(true);
                         tDialogLoginErrors.setText(languageManager.getValue(languageManager.getLanguage(), response.getString("message")));
                     }
 
@@ -414,9 +416,11 @@ public class MenuScreen implements Screen  {
                     fDialogRegisterPassword.setText(null);
                     fDialogRegisterRepeatPassword.setText(null);
                     tDialogRegisterErrors.setText(null);
+                    tDialogRegisterErrors.setVisible(false);
                     isDialog = false;
                     menuDialog.hide();
                 } else {
+                    tDialogRegisterErrors.setVisible(true);
                     tDialogRegisterErrors.setText(languageManager.getValue(languageManager.getLanguage(), response.getString("message")));
                 }
                 }).start();
