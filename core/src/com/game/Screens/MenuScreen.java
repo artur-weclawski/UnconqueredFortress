@@ -264,6 +264,7 @@ public class MenuScreen implements Screen  {
                 isDialog = true;
 
                 tDialogLoginErrors.setText(null);
+                tDialogLoginErrors.setVisible(false);
                 menuDialog.removeActor(table_dialogRegister);
                 menuDialog.addActor(table_dialogLogin);
                 menuDialog.show(stage);
@@ -363,6 +364,7 @@ public class MenuScreen implements Screen  {
             @Override
             public void clicked(InputEvent event, float x, float y){
                 tDialogLoginErrors.setText(null);
+                tDialogLoginErrors.setVisible(false);
                 menuDialog.removeActor(table_dialogLogin);
                 menuDialog.addActor(table_dialogRegister);
                 menuDialog.getButtonTable().clearChildren();
@@ -431,6 +433,7 @@ public class MenuScreen implements Screen  {
             @Override
             public void clicked(InputEvent event, float x, float y){
                 tDialogRegisterErrors.setText(null);
+                tDialogRegisterErrors.setVisible(false);
                 menuDialog.removeActor(table_dialogRegister);
                 menuDialog.addActor(table_dialogLogin);
                 menuDialog.getButtonTable().clearChildren();
