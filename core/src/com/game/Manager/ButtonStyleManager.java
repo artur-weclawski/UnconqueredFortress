@@ -15,7 +15,6 @@ public class ButtonStyleManager {
         textButtonStyle.pressedOffsetX = 1;
         textButtonStyle.pressedOffsetY = -1;
         textButtonStyle.font = font;
-
     }
 
     public TextButton.TextButtonStyle returnTextButtonStyle(TextButton.TextButtonStyle textButtonStyle) {

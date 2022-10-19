@@ -33,148 +33,148 @@ public class WorldManager {
     public WorldManager() {
     }
 
-    private int[][] generateWater(int[][] arr, int randomI, int randomJ, int randomWaterSize, int randomAxis, int randomCorner, int randomDeep, int seed){
+    private int[][] generateWater(int[][] map, int waterI, int waterJ, int waterSize, int chosenAxis, int chosenCorner, int waterDeep, int seed){
         Random random = new Random(seed);
         boolean isReturn = false;
-        switch (randomCorner) {
+        switch (chosenCorner) {
             case 1 -> {
-                if (randomAxis == 0) {
+                if (chosenAxis == 0) {
                     for (int i = 0; i < 10; i++) {
                         for (int j = 0; j < 15; j++) {
-                            if ((j >= randomJ && j < randomJ + randomWaterSize && i <= randomDeep)) {
-                                arr[i][j] = 2;
+                            if ((j >= waterJ && j < waterJ + waterSize && i <= waterDeep)) {
+                                map[i][j] = 2;
                             }
                         }
-                        randomDeep--;
-                        if (randomDeep < 0) {
+                        waterDeep--;
+                        if (waterDeep < 0) {
                             isReturn = true;
                         }
                         int checker = 0;
-                        int newPosition = random.nextInt(randomJ - 1, randomJ + randomWaterSize + 2);
+                        int newPosition = random.nextInt(waterJ - 1, waterJ + waterSize + 2);
                         while (newPosition > 14) {
                             checker++;
-                            newPosition = random.nextInt(randomJ - 1, randomJ + randomWaterSize + 2);
+                            newPosition = random.nextInt(waterJ - 1, waterJ + waterSize + 2);
                             if(checker > 100) {
                                 newPosition = random.nextInt(0, 13);
                             }
                         }
-                        randomJ = newPosition;
+                        waterJ = newPosition;
                         checker = 0;
-                        int newWaterSize = random.nextInt(randomWaterSize - 1, randomWaterSize + 2);
-                        while (newWaterSize > randomWaterSize || newWaterSize < 0) {
+                        int newWaterSize = random.nextInt(waterSize - 1, waterSize + 2);
+                        while (newWaterSize > waterSize || newWaterSize < 0) {
                             checker++;
-                            newWaterSize = random.nextInt(randomWaterSize - 1, randomWaterSize + 2);
+                            newWaterSize = random.nextInt(waterSize - 1, waterSize + 2);
                             if(checker > 100){
                                 newWaterSize = 0;
                             }
                         }
-                        randomWaterSize = newWaterSize;
+                        waterSize = newWaterSize;
                     }
                 } else {
                     for (int j = 0; j < 15; j++) {
                         for (int i = 0; i < 10; i++) {
-                            if ((i >= randomI && i < randomI + randomWaterSize && j < randomDeep)) {
-                                arr[i][j] = 2;
+                            if ((i >= waterI && i < waterI + waterSize && j < waterDeep)) {
+                                map[i][j] = 2;
                             }
                         }
 
-                        randomDeep--;
-                        if (randomDeep <= 0) {
+                        waterDeep--;
+                        if (waterDeep <= 0) {
                             isReturn = true;
                         }
                         int checker = 0;
-                        int newPosition = random.nextInt(randomI - 1, randomI + randomWaterSize + 2);
+                        int newPosition = random.nextInt(waterI - 1, waterI + waterSize + 2);
                         while (newPosition > 9) {
                             checker++;
-                            newPosition = random.nextInt(randomI - 1, randomI + randomWaterSize + 2);
+                            newPosition = random.nextInt(waterI - 1, waterI + waterSize + 2);
                             if(checker > 100) {
                                 newPosition = random.nextInt(0, 9);
                             }
                         }
-                        randomI = newPosition;
+                        waterI = newPosition;
                         checker = 0;
-                        int newWaterSize = random.nextInt(randomWaterSize - 1, randomWaterSize + 2);
-                        while (newWaterSize > randomWaterSize || newWaterSize < 0) {
+                        int newWaterSize = random.nextInt(waterSize - 1, waterSize + 2);
+                        while (newWaterSize > waterSize || newWaterSize < 0) {
                             checker++;
-                            newWaterSize = random.nextInt(randomWaterSize - 1, randomWaterSize + 2);
+                            newWaterSize = random.nextInt(waterSize - 1, waterSize + 2);
                             if(checker > 100) {
                                 newWaterSize = 0;
                             }
                         }
-                        randomWaterSize = newWaterSize;
+                        waterSize = newWaterSize;
                     }
                 }
             }
             case 2 -> {
-                if (randomAxis == 0) {
+                if (chosenAxis == 0) {
                     for (int i = 9; i >=0; i--) {
                         for (int j = 0; j < 15; j++) {
-                            if ((j >= randomJ && j < randomJ + randomWaterSize && i > randomDeep)) {
-                                arr[i][j] = 2;
+                            if ((j >= waterJ && j < waterJ + waterSize && i > waterDeep)) {
+                                map[i][j] = 2;
                             }
                         }
                         if (i == 0) {
                             isReturn = true;
                         }
                         int checker = 0;
-                        int newPosition = random.nextInt(randomJ - 1, randomJ + randomWaterSize + 2);
+                        int newPosition = random.nextInt(waterJ - 1, waterJ + waterSize + 2);
                         while (newPosition > 14) {
                             checker++;
-                            newPosition = random.nextInt(randomJ - 1, randomJ + randomWaterSize + 2);
+                            newPosition = random.nextInt(waterJ - 1, waterJ + waterSize + 2);
                             if(checker > 100) {
                                 newPosition = random.nextInt(0, 13);
                             }
                         }
-                        randomJ = newPosition;
+                        waterJ = newPosition;
                         checker = 0;
-                        int newWaterSize = random.nextInt(randomWaterSize - 1, randomWaterSize + 2);
-                        while (newWaterSize > randomWaterSize || newWaterSize < 0) {
+                        int newWaterSize = random.nextInt(waterSize - 1, waterSize + 2);
+                        while (newWaterSize > waterSize || newWaterSize < 0) {
                             checker++;
-                            newWaterSize = random.nextInt(randomWaterSize - 1, randomWaterSize + 2);
+                            newWaterSize = random.nextInt(waterSize - 1, waterSize + 2);
                             if(checker > 100) {
                                 newWaterSize = 0;
                             }
                         }
-                        randomWaterSize = newWaterSize;
+                        waterSize = newWaterSize;
                     }
                 } else {
                     for (int j = 14; j >= 0; j--) {
                         for (int i = 0; i < 10; i++) {
-                            if ((i >= randomI && i < randomI + randomWaterSize && j > randomDeep)) {
-                                arr[i][j] = 2;
+                            if ((i >= waterI && i < waterI + waterSize && j > waterDeep)) {
+                                map[i][j] = 2;
                             }
                         }
                         if (j == 0) {
                             isReturn = true;
                         }
                         int checker = 0;
-                        int newPosition = random.nextInt(randomI - 1, randomI + randomWaterSize + 2);
+                        int newPosition = random.nextInt(waterI - 1, waterI + waterSize + 2);
                         while (newPosition > 9) {
                             checker++;
-                            newPosition = random.nextInt(randomI - 1, randomI + randomWaterSize + 2);
+                            newPosition = random.nextInt(waterI - 1, waterI + waterSize + 2);
                             if(checker > 100) {
                                 newPosition = random.nextInt(0,9);
                             }
                         }
-                        randomI = newPosition;
+                        waterI = newPosition;
                         checker = 0;
-                        int newWaterSize = random.nextInt(randomWaterSize - 1, randomWaterSize + 2);
-                        while (newWaterSize > randomWaterSize || newWaterSize < 0) {
+                        int newWaterSize = random.nextInt(waterSize - 1, waterSize + 2);
+                        while (newWaterSize > waterSize || newWaterSize < 0) {
                             checker++;
-                            newWaterSize = random.nextInt(randomWaterSize - 1, randomWaterSize + 2);
+                            newWaterSize = random.nextInt(waterSize - 1, waterSize + 2);
                             if(checker > 100) {
                                 newWaterSize = 0;
                             }
                         }
-                        randomWaterSize = newWaterSize;
+                        waterSize = newWaterSize;
                     }
                 }
             }
         }
         if(isReturn) {
-            return arr;
+            return map;
         } else {
-            return generateWater(arr, randomI, randomJ, randomWaterSize, randomAxis, randomCorner, randomDeep, seed);
+            return generateWater(map, waterI, waterJ, waterSize, chosenAxis, chosenCorner, waterDeep, seed);
         }
     }
     private List<int[]> pathGenerating(int[][] arr, int[] start, int[] end, int seed){
@@ -352,7 +352,7 @@ public class WorldManager {
         }
 
         //wylosowanie punktu z obrzeży tablicy, przypisanie wartości początkowej
-        int platerBaseI;
+        int playerBaseI;
         int playerBaseJ;
         int enemyBaseI;
         int enemyBaseJ;
@@ -390,14 +390,14 @@ public class WorldManager {
                 //baza z lewej lub u dołu
                 //0,0
                 if (chosenAxis == 0) {
-                    platerBaseI = 0;
+                    playerBaseI = 0;
                     playerBaseJ = random.nextInt(0, 15-waterSize);
                     System.out.println("1");
                     System.out.println("2");
-                    generateWater(map, platerBaseI, playerBaseJ, waterSize, chosenAxis, chosenCorner, waterDeep, seed);
+                    generateWater(map, playerBaseI, playerBaseJ, waterSize, chosenAxis, chosenCorner, waterDeep, seed);
                     System.out.println("3");
-                    platerBaseI = random.nextInt((waterDeep + 2), 10);
-                    if (platerBaseI < 9) {
+                    playerBaseI = random.nextInt((waterDeep + 2), 10);
+                    if (playerBaseI < 9) {
                         System.out.println("4.1");
                         playerBaseJ = random.nextInt(0, 2);
                         if (playerBaseJ == 1) {
@@ -405,7 +405,7 @@ public class WorldManager {
                         }
                         System.out.println("5.1");
                         //wygenerowanie bazy
-                        playerBasePosition = new int[]{platerBaseI, playerBaseJ};
+                        playerBasePosition = new int[]{playerBaseI, playerBaseJ};
                         //generowanie bazy przeciwnika
                         enemyBaseI = random.nextInt(waterDeep + 1, 10);
                         //po przeciwnej stronie
@@ -420,7 +420,7 @@ public class WorldManager {
                         System.out.println("4.2");
                         playerBaseJ = random.nextInt(0, 14);
                         //wygenerowanie bazy i=0; j od 0-13
-                        playerBasePosition = new int[]{platerBaseI, playerBaseJ};
+                        playerBasePosition = new int[]{playerBaseI, playerBaseJ};
                         enemyBaseI = 0;
                         enemyBaseJ = random.nextInt(0, 14);
                         enemyBasePosition = new int[]{enemyBaseI, enemyBaseJ};
@@ -444,7 +444,7 @@ public class WorldManager {
                     System.out.println("Path length: " + path.size());
                     generatePath(map, path);
                     System.out.println("10");
-                    map[platerBaseI][playerBaseJ] = 9;
+                    map[playerBaseI][playerBaseJ] = 9;
                     map[enemyBaseI][enemyBaseJ] = 8;
                     generateObstacles(map, seed, difficulty);
                     System.out.println("11");
@@ -452,24 +452,24 @@ public class WorldManager {
                     overwritePath(map, path);
                     System.out.println("12");
                 } else {
-                    platerBaseI = random.nextInt(0, 10-waterSize);
+                    playerBaseI = random.nextInt(0, 10-waterSize);
                     playerBaseJ = 0;
                     System.out.println("1");
                     System.out.println("2");
-                    generateWater(map, platerBaseI, playerBaseJ, waterSize, chosenAxis, chosenCorner, waterDeep, seed);
+                    generateWater(map, playerBaseI, playerBaseJ, waterSize, chosenAxis, chosenCorner, waterDeep, seed);
                     System.out.println("3");
                     playerBaseJ = random.nextInt((waterDeep + 2), 15);
                     if (playerBaseJ < 14) {
                         System.out.println("4.1");
-                        platerBaseI = random.nextInt(0, 2);
-                        if (platerBaseI == 1) {
-                            platerBaseI = 9;
+                        playerBaseI = random.nextInt(0, 2);
+                        if (playerBaseI == 1) {
+                            playerBaseI = 9;
                         }
                         System.out.println("5.1");
-                        playerBasePosition = new int[]{platerBaseI, playerBaseJ};
+                        playerBasePosition = new int[]{playerBaseI, playerBaseJ};
                         //generowanie bazy przeciwnika
                         enemyBaseJ = random.nextInt(waterDeep + 1, 15);
-                        if (platerBaseI == 0) {
+                        if (playerBaseI == 0) {
                             enemyBaseI = 9;
                         } else {
                             enemyBaseI = 0;
@@ -479,8 +479,8 @@ public class WorldManager {
                     } else {
                         System.out.println("4.2");
                         //wygenerowanie bazy
-                        platerBaseI = random.nextInt(0, 10);
-                        playerBasePosition = new int[]{platerBaseI, playerBaseJ};
+                        playerBaseI = random.nextInt(0, 10);
+                        playerBasePosition = new int[]{playerBaseI, playerBaseJ};
                         enemyBaseJ = 0;
                         enemyBaseI = random.nextInt(0, 10);
                         enemyBasePosition = new int[]{enemyBaseI, enemyBaseJ};
@@ -504,7 +504,7 @@ public class WorldManager {
                     System.out.println("Path length: " + path.size());
                     generatePath(map, path);
                     System.out.println("10");
-                    map[platerBaseI][playerBaseJ] = 9;
+                    map[playerBaseI][playerBaseJ] = 9;
                     map[enemyBaseI][enemyBaseJ] = 8;
                     generateObstacles(map, seed, difficulty);
                     System.out.println("11");
@@ -517,13 +517,13 @@ public class WorldManager {
                 //10,15
                 if (chosenAxis == 0) {
                     playerBaseJ = random.nextInt(0, 15-waterSize);
-                    platerBaseI = 9;
+                    playerBaseI = 9;
                     System.out.println("1");
                     System.out.println("2");
-                    generateWater(map, platerBaseI, playerBaseJ, waterSize, chosenAxis, chosenCorner, waterDeep, seed);
+                    generateWater(map, playerBaseI, playerBaseJ, waterSize, chosenAxis, chosenCorner, waterDeep, seed);
                     System.out.println("3");
-                    platerBaseI = random.nextInt(0, 10 - (waterDeep + 1));
-                    if (platerBaseI > 0) {
+                    playerBaseI = random.nextInt(0, 10 - (waterDeep + 1));
+                    if (playerBaseI > 0) {
                         System.out.println("4.1");
                         playerBaseJ = random.nextInt(0, 2);
                         if (playerBaseJ == 1) {
@@ -531,7 +531,7 @@ public class WorldManager {
                         }
                         System.out.println("5.1");
                         //wygenerowanie bazy
-                        playerBasePosition = new int[]{platerBaseI, playerBaseJ};
+                        playerBasePosition = new int[]{playerBaseI, playerBaseJ};
                         enemyBaseI = random.nextInt(0, 10 - (waterDeep + 1));
                         if (playerBaseJ == 0) {
                             enemyBaseJ = 14;
@@ -544,7 +544,7 @@ public class WorldManager {
                         System.out.println("4.2");
                         playerBaseJ = random.nextInt(0, 14);
                         //wygenerowanie bazy
-                        playerBasePosition = new int[]{platerBaseI, playerBaseJ};
+                        playerBasePosition = new int[]{playerBaseI, playerBaseJ};
                         enemyBaseI = 9;
                         enemyBaseJ = random.nextInt(0, 14);
                         enemyBasePosition = new int[]{enemyBaseI, enemyBaseJ};
@@ -568,7 +568,7 @@ public class WorldManager {
                     System.out.println("Path length: " + res.size());
                     generatePath(map, res);
                     System.out.println("10");
-                    map[platerBaseI][playerBaseJ] = 9;
+                    map[playerBaseI][playerBaseJ] = 9;
                     map[enemyBaseI][enemyBaseJ] = 8;
                     generateObstacles(map, seed, difficulty);
                     System.out.println("11");
@@ -576,23 +576,23 @@ public class WorldManager {
                     overwritePath(map, res);
                     System.out.println("12");
                 } else {
-                    platerBaseI = random.nextInt(0, 10-waterSize);
+                    playerBaseI = random.nextInt(0, 10-waterSize);
                     playerBaseJ = 14;
                     System.out.println("1");
                     System.out.println("2");
-                    generateWater(map, platerBaseI, playerBaseJ, waterSize, chosenAxis, chosenCorner, waterDeep, seed);
+                    generateWater(map, playerBaseI, playerBaseJ, waterSize, chosenAxis, chosenCorner, waterDeep, seed);
                     System.out.println("3");
                     playerBaseJ = random.nextInt(0, 15 - (waterDeep + 1));
                     if (playerBaseJ > 0) {
                         System.out.println("4.1");
-                        platerBaseI = random.nextInt(0, 2);
-                        if (platerBaseI == 1) {
-                            platerBaseI = 9;
+                        playerBaseI = random.nextInt(0, 2);
+                        if (playerBaseI == 1) {
+                            playerBaseI = 9;
                         }
                         System.out.println("5.1");
-                        playerBasePosition = new int[]{platerBaseI, playerBaseJ};
+                        playerBasePosition = new int[]{playerBaseI, playerBaseJ};
                         enemyBaseJ = random.nextInt(0, 15 - (waterDeep + 1));
-                        if (platerBaseI == 0) {
+                        if (playerBaseI == 0) {
                             enemyBaseI = 9;
                         } else {
                             enemyBaseI = 0;
@@ -602,8 +602,8 @@ public class WorldManager {
 
                     } else {
                         System.out.println("4.2");
-                        platerBaseI = random.nextInt(1, 10);
-                        playerBasePosition = new int[]{platerBaseI, playerBaseJ};
+                        playerBaseI = random.nextInt(1, 10);
+                        playerBasePosition = new int[]{playerBaseI, playerBaseJ};
                         enemyBaseJ = 14;
                         enemyBaseI = random.nextInt(0, 10);
                         enemyBasePosition = new int[]{enemyBaseI, enemyBaseJ};
@@ -627,7 +627,7 @@ public class WorldManager {
                     System.out.println("Path length: " + path.size());
                     generatePath(map, path);
                     System.out.println("10");
-                    map[platerBaseI][playerBaseJ] = 9;
+                    map[playerBaseI][playerBaseJ] = 9;
                     map[enemyBaseI][enemyBaseJ] = 8;
                     generateObstacles(map, seed, difficulty);
                     System.out.println("11");
