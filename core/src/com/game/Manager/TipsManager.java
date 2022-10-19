@@ -50,7 +50,7 @@ public class TipsManager {
     }
     public void createTipsDialog(){
 
-        pixmap = new Pixmap(new FileHandle("assets/backgrounds/game/tempBackground.png"));
+        pixmap = new Pixmap(new FileHandle("assets/backgrounds/tempBackground.png"));
         System.out.println("pm: " + pixmap.getWidth() + " : " + pixmap.getHeight());
         scaledPixmap = new Pixmap((int) (1920*scale/1.5f), (int) (1080*scale/1.5f), pixmap.getFormat());
         scaledPixmap.drawPixmap(
@@ -120,6 +120,11 @@ public class TipsManager {
         table_mechanics.add(new Label(languageManager.getValue(languageManager.getLanguage(), "tEvent"), bigLabelStyle)).width(Gdx.graphics.getWidth()).padLeft(4*scale);
         table_mechanics.row();
         table_mechanics.add(new Label(languageManager.getValue(languageManager.getLanguage(), "tEventDescription"), labelStyle)).width(Gdx.graphics.getWidth()).height(Gdx.graphics.getHeight()/10*2-64*scale).padLeft(4*scale);
+        if(Gdx.graphics.getHeight()==900) {
+            table_mechanics.padBottom(32);
+        } else if(Gdx.graphics.getHeight()==1080) {
+            table_mechanics.padBottom(40);
+        }
     }
 
     public void createTipsEnemiesTable(){

@@ -1,11 +1,8 @@
 package com.game.Manager;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.game.Entity.Bullet;
 import com.game.Entity.Enemy.Enemy;
 import com.game.Entity.RoadObstacle.RoadObstacle;
-import com.game.Entity.Tower.Tower;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

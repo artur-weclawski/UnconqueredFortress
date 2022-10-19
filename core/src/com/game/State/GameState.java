@@ -8,9 +8,5 @@ public enum GameState {
     public static void setGameState(GameState state){
         gameState = state;
     }
-    public static GameState getGameState(){
-        return gameState;
-    }
     public static void setPreviousGameState(GameState state){previousGameState = state;}
-    public static GameState getPreviousGameState(){return previousGameState;}
 }

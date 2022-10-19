@@ -19,25 +19,18 @@ public class Base {
     private int diamonds;
     private int wave;
     private int seed;
-
     private int infoToDisplay;
     private String infoToDisplayName;
     private JSONObject infoToDisplayObjectNow, infoToDisplayObjectUpgraded;
-
     private String difficulty;
     private float difficultyMultiplier;
     private int cleanPrice;
-
     private JSONObject multipliers;
-
     private int usesLeft;
     private int roadObstacleId;
     private boolean shouldUpdateInfo;
     private TowerManager towerManager;
     private EnemyManager enemyManager;
-
-
-
 
     public enum State{
         Running, Paused, Resumed, GameOver
@@ -154,16 +147,12 @@ public class Base {
             int addingHealth = upgrade.getInt("maxHealth");
             maxHealth += addingHealth;
             health += addingHealth;
-
         }
-
     }
-
 
     public float getDifficultyMultiplier() {
         return difficultyMultiplier;
     }
-
 
     public boolean isShouldUpdateInfo() {
         return shouldUpdateInfo;
@@ -206,7 +195,6 @@ public class Base {
         return infoToDisplayName;
     }
 
-
     public State getState() {
         return state;
     }
@@ -239,8 +227,6 @@ public class Base {
         return roadObstacleId;
     }
 
-
-
     public JSONObject getInfoToDisplayObjectNow() {
         return infoToDisplayObjectNow;
     }
@@ -253,16 +239,13 @@ public class Base {
         this.health = this.health - dmg;
     }
 
-
     public void healBase(int heal){
         this.health = this.health + heal;
     }
 
-
     public JSONObject getMultipliers() {
         return multipliers;
     }
-
 
     public int getMaxHealth() {
         return maxHealth;

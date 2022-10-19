@@ -56,7 +56,7 @@ public class Enemy extends Actor {
 
     private int dodgeChance;
 
-    public Enemy(){
+    public Enemy() {
 
     }
 
@@ -97,7 +97,7 @@ public class Enemy extends Actor {
         TextureRegion[][] spritePosition = TextureRegion.split(spriteMap, 64, 64);
         TextureRegion[] animationSprites;
 
-        for (int j=0; j<4; j++) {
+        for (int j = 0; j < 4; j++) {
 
             animationSprites = new TextureRegion[spritePosition[j].length];
 
@@ -113,7 +113,7 @@ public class Enemy extends Actor {
 
     }
 
-    public Enemy(int health, int damage, int money, int diamonds, int speed, String path, String name, int enemySize, boolean isFlying){
+    public Enemy(int health, int damage, int money, int diamonds, int speed, String path, String name, int enemySize, boolean isFlying) {
         this.isFlying = isFlying;
         this.canBeAttacked = true;
         this.name = name;
@@ -137,9 +137,7 @@ public class Enemy extends Actor {
         TextureRegion[] animationSprites;
 
 
-
-
-        for (int j=0; j<4; j++) {
+        for (int j = 0; j < 4; j++) {
 
             animationSprites = new TextureRegion[spritePosition[j].length];
 
@@ -153,8 +151,6 @@ public class Enemy extends Actor {
         }
 
         currentAnimation = animationArr[1];
-
-
 
 
     }
@@ -174,17 +170,15 @@ public class Enemy extends Actor {
     }
 
 
-    public void dealDmg(float damage)
-    {
+    public void dealDmg(float damage) {
         health -= damage;
     }
 
-    public boolean isAlive()
-    {
+    public boolean isAlive() {
         return health > 0;
     }
 
-    public Vector2 getPosition(){
+    public Vector2 getPosition() {
         return position;
     }
 
@@ -192,10 +186,9 @@ public class Enemy extends Actor {
     public void initEnemy(java.util.List<Vector2> path, float scale) {
         this.scale = scale;
         this.path = new ArrayList<>();
-        this.speed = speed*scale;
+        this.speed = speed * scale;
 
-        for (Vector2 v : path)
-        {
+        for (Vector2 v : path) {
             this.path.add(new Vector2(v.x, v.y));
         }
 
@@ -207,11 +200,10 @@ public class Enemy extends Actor {
         this.base = base;
         this.scale = scale;
         this.path = new ArrayList<>();
-        this.speed = speed*scale;
+        this.speed = speed * scale;
 
 
-        for (Vector2 v : path)
-        {
+        for (Vector2 v : path) {
             this.path.add(new Vector2(v.x, v.y));
         }
 
@@ -223,11 +215,10 @@ public class Enemy extends Actor {
         this.base = base;
         this.scale = scale;
         this.path = new ArrayList<>();
-        this.speed = speed*scale;
+        this.speed = speed * scale;
         this.canBeAttacked = false;
         this.summoningTime = summoningTime;
-        for (Vector2 v : path)
-        {
+        for (Vector2 v : path) {
             this.path.add(new Vector2(v.x, v.y));
         }
 
@@ -239,7 +230,7 @@ public class Enemy extends Actor {
         TextureRegion[][] spritePosition = TextureRegion.split(spriteMap, 64, 64);
         TextureRegion[] animationSprites;
 
-        for (int j=0; j<1; j++) {
+        for (int j = 0; j < 1; j++) {
 
             animationSprites = new TextureRegion[spritePosition[j].length];
 
@@ -256,14 +247,13 @@ public class Enemy extends Actor {
     }
 
 
-    private boolean MoveToPoint(Vector2 finalPoint, float deltaTime)
-    {
+    private boolean MoveToPoint(Vector2 finalPoint, float deltaTime) {
         if (position.equals(finalPoint))
             return true;
 
 
         // Find direction from current position to goal
-        Vector2 direction = new Vector2  (position.x - finalPoint.x, position.y - finalPoint.y);
+        Vector2 direction = new Vector2(position.x - finalPoint.x, position.y - finalPoint.y);
 
         //System.out.println("x: "+ direction.x + ", y: "+ direction.y);
 
@@ -279,7 +269,7 @@ public class Enemy extends Actor {
 
 
         // If we moved PAST the goal, move it back to the goal
-        Vector2 directionAfterMove = new Vector2  (position.x - finalPoint.x, position.y - finalPoint.y);
+        Vector2 directionAfterMove = new Vector2(position.x - finalPoint.x, position.y - finalPoint.y);
         if ((direction.x * directionAfterMove.x < 0) || (direction.y * directionAfterMove.y < 0))
             position = finalPoint;
 
@@ -289,29 +279,26 @@ public class Enemy extends Actor {
 
     }
 
-    public float getEnemySize(){
+    public float getEnemySize() {
         return enemySize;
     }
 
-    public boolean isAtEnd()
-    {
+    public boolean isAtEnd() {
         return isAtEnd;
     }
 
-    public void update(float deltaTime){
+    public void update(float deltaTime) {
         stateTime += deltaTime;
 
 
         //Blob
-        if(Objects.equals(name, "blob"))
-        {
+        if (Objects.equals(name, "blob")) {
             regenTimeLeft -= deltaTime;
-            if(regenTimeLeft <0) {
+            if (regenTimeLeft < 0) {
                 regenTimeLeft = regenTime;
-                if (health<maxHealth)
-                {
-                    if (health+ healthRegen < maxHealth)
-                        health+= healthRegen;
+                if (health < maxHealth) {
+                    if (health + healthRegen < maxHealth)
+                        health += healthRegen;
                     else
                         health = maxHealth;
                 }
@@ -319,13 +306,10 @@ public class Enemy extends Actor {
         }
 
         //Summon
-        if(Objects.equals(name, "summon"))
-        {
-            if (!canBeAttacked)
-            {
+        if (Objects.equals(name, "summon")) {
+            if (!canBeAttacked) {
                 this.summoningTime -= deltaTime;
-                if (summoningTime <= 0)
-                {
+                if (summoningTime <= 0) {
                     canBeAttacked = true;
                     moveDirection = "";
                 }
@@ -335,17 +319,14 @@ public class Enemy extends Actor {
         }
 
         //Summoner
-        if(Objects.equals(name, "summoner"))
-        {
-            if (timeToSummonNextEnemy <= 0 )
-            {
+        if (Objects.equals(name, "summoner")) {
+            if (timeToSummonNextEnemy <= 0) {
                 summonEnemy();
                 isSummoning = true;
                 canBeAttacked = false;
                 timeToSummonNextEnemy = delayBetweenSummonings;
 
-                switch (moveDirection)
-                {
+                switch (moveDirection) {
                     case "Right" -> currentAnimation = summoningAnimation[0];
                     case "Left" -> currentAnimation = summoningAnimation[1];
                     case "Down" -> currentAnimation = summoningAnimation[2];
@@ -353,21 +334,16 @@ public class Enemy extends Actor {
                 }
 
                 return;
-            }
-            else if (isSummoning)
-            {
+            } else if (isSummoning) {
                 timeOfActualSummoning += deltaTime;
-                if (timeOfActualSummoning >= summoningTime)
-                {
+                if (timeOfActualSummoning >= summoningTime) {
                     isSummoning = false;
                     canBeAttacked = true;
                     moveDirection = "";
                     timeOfActualSummoning = 0;
                 }
                 return;
-            }
-            else
-            {
+            } else {
                 timeToSummonNextEnemy -= deltaTime;
             }
 
@@ -375,38 +351,32 @@ public class Enemy extends Actor {
 
 
         //All enemies
-        if(path.size() > 0 && MoveToPoint(path.get(0), deltaTime)) {
+        if (path.size() > 0 && MoveToPoint(path.get(0), deltaTime)) {
             path.remove(0);
 
 
             //chamge rotation if enemy changes direction
-            if (path.size() > 0)
-            {
-                Vector2 direction = new Vector2  (position.x - path.get(0).x, position.y - path.get(0).y);
-                if (direction.x < 0 && direction.y == 0 && moveDirection!="Right") {
+            if (path.size() > 0) {
+                Vector2 direction = new Vector2(position.x - path.get(0).x, position.y - path.get(0).y);
+                if (direction.x < 0 && direction.y == 0 && moveDirection != "Right") {
                     moveDirection = "Right";
                     currentAnimation = animationArr[0];
-                }
-                else if (direction.x > 0 && direction.y == 0 && moveDirection!="Left") {
+                } else if (direction.x > 0 && direction.y == 0 && moveDirection != "Left") {
                     moveDirection = "Left";
                     currentAnimation = animationArr[1];
-                }
-                else if (direction.x == 0 && direction.y > 0 && moveDirection!="Down") {
+                } else if (direction.x == 0 && direction.y > 0 && moveDirection != "Down") {
                     moveDirection = "Down";
                     currentAnimation = animationArr[2];
-                }
-                else if (direction.x == 0 && direction.y < 0 && moveDirection!="Up") {
+                } else if (direction.x == 0 && direction.y < 0 && moveDirection != "Up") {
                     moveDirection = "Up";
                     currentAnimation = animationArr[3];
                 }
-            }
-            else if (path.size() == 0)
+            } else if (path.size() == 0)
                 isAtEnd = true;
         }
     }
 
-    public void updateSummoned(float deltaTime)
-    {
+    public void updateSummoned(float deltaTime) {
         Iterator<Enemy> eIterator = summonedEnemies.iterator();
         while (eIterator.hasNext()) {
             Enemy e = eIterator.next();
@@ -415,33 +385,31 @@ public class Enemy extends Actor {
 
 
             //if reached end
-            if(e.isAtEnd())
-            {
-                base.damageBase(Math.round(base.getDifficultyMultiplier()*(e.getDmg()-base.getMultipliers().getFloat("damageReduction"))));
+            if (e.isAtEnd()) {
+                base.damageBase(Math.round(base.getDifficultyMultiplier() * (e.getDmg() - base.getMultipliers().getFloat("damageReduction"))));
                 eIterator.remove();
             }
 
             //if dead
-            if(!e.isAlive())
-            {
+            if (!e.isAlive()) {
                 eIterator.remove();
             }
 
         }
     }
 
-    public float getY(){
+    public float getY() {
         return position.y;
     }
 
-    public float getHeight(){
+    public float getHeight() {
         return enemySize;
     }
 
 
-    public void render(SpriteBatch batch, ShapeRenderer shapeRenderer){
+    public void render(SpriteBatch batch, ShapeRenderer shapeRenderer) {
 
-        batch.draw(currentAnimation.getKeyFrame(stateTime, true), position.x, position.y+scale*enemySize/2 ,scale*enemySize, scale*enemySize);
+        batch.draw(currentAnimation.getKeyFrame(stateTime, true), position.x, position.y + scale * enemySize / 2, scale * enemySize, scale * enemySize);
 
         if (canBeAttacked) {
             batch.end();
@@ -457,9 +425,6 @@ public class Enemy extends Actor {
 
             batch.begin();
         }
-
-        //shapeRenderer.circle(position.x+enemySize*scale/2, position.y+enemySize*scale/2+scale*enemySize/2,1);
-
     }
 
 
@@ -472,13 +437,13 @@ public class Enemy extends Actor {
     }
 
     public void changeSpeed(float v) {
-        this.speed = speed*v;
+        this.speed = speed * v;
     }
 
 
     public void summonEnemy() {
         Enemy summon = new Enemy(summonJSONObject.getInt("health"), summonJSONObject.getInt("damage"), summonJSONObject.getInt("money"), summonJSONObject.getInt("diamonds"), summonJSONObject.getInt("speed"), "assets/game/enemies/summon.png", summonJSONObject.getString("name"), 64, summonJSONObject.getBoolean("isFlying"));
-        summon.initSummonedEnemy(this.summoningTime*0.8f, this.base, this.path, this.scale);
+        summon.initSummonedEnemy(this.summoningTime * 0.8f, this.base, this.path, this.scale);
         summonedEnemies.add(summon);
 
     }

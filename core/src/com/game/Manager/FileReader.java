@@ -6,7 +6,6 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.JsonWriter;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -18,9 +17,7 @@ import java.nio.file.Paths;
 import java.util.Base64;
 
 public class FileReader {
-
     private String tokenValue;
-
     private String resolutionValue;
     private int volumeValue;
     private int volumeEffectsValue;

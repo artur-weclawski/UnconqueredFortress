@@ -400,7 +400,6 @@ public class ProfileCloudScreen implements Screen {
                 if (chosenDifficulty !=null) {
                     System.out.println("Stworzono gre na profilu " + chosenProfile + "o poziomie trudnosci " + chosenDifficulty);
                     GameState.setGameState(GameState.PLAYING);
-                    ///in cloud put profileNumber
                     game.setScreen(new GameScreen(game,profileManager.createEmptySave(chosenDifficulty, chosenProfile, tDialogSeedValue.getText()), false));
                 }
             }

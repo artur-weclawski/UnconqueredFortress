@@ -25,7 +25,7 @@ public class RoadObstacle extends Actor {
 
     private String name;
     private Base base;
-    private int tileX,tileY;
+    private int tileX, tileY;
     private float scale;
     private TextureRegion texture;
     private int usesLeft;
@@ -64,7 +64,7 @@ public class RoadObstacle extends Actor {
 
         this.texture = new TextureRegion(new Texture(Gdx.files.internal(path)));
 
-        this.position = new Vector2(tileX * scale * 64 + Gdx.graphics.getWidth() / 20,(9 - tileY) * scale * 64 + (Gdx.graphics.getHeight() - Gdx.graphics.getWidth() / 30 * 16) / 2);
+        this.position = new Vector2(tileX * scale * 64 + Gdx.graphics.getWidth() / 20, (9 - tileY) * scale * 64 + (Gdx.graphics.getHeight() - Gdx.graphics.getWidth() / 30 * 16) / 2);
 
         this.addListener(new ClickListener() {
 
@@ -79,32 +79,30 @@ public class RoadObstacle extends Actor {
                 getBase().setUsesLeft(getUsesLeft());
                 getBase().setRoadObstacleId(getThis().hashCode());
 
-                if(getUsesLeft()>0)
+                if (getUsesLeft() > 0)
                     getBase().setInfoToDisplay(5, getName());
 
 
             }
 
             public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-                if(!isClicked) {
+                if (!isClicked) {
                     getBase().setRoadObstacleId(0);
                     getBase().setInfoToDisplay(0);
                 }
-                isClicked=false;
+                isClicked = false;
 
             }
 
         });
 
-        this.setBounds(position.x,position.y,textureSize,textureSize);
+        this.setBounds(position.x, position.y, textureSize, textureSize);
         this.disableListeners();
-
-
 
 
     }
 
-    public void clearImage(){
+    public void clearImage() {
         this.texture.setTexture(new Texture(Gdx.files.internal("assets/game/towers/clearImage.png")));
     }
 
@@ -149,42 +147,37 @@ public class RoadObstacle extends Actor {
         return usesLeft;
     }
 
-    public void enableListeners(){
+    public void enableListeners() {
         this.setTouchable(Touchable.enabled);
     }
 
-    public void disableListeners(){
+    public void disableListeners() {
         this.setTouchable(Touchable.disabled);
     }
 
     public int getSellWorth() {
-        return Math.round(buyPrice/20f*usesLeft);
+        return Math.round(buyPrice / 20f * usesLeft);
     }
 
-    public void update(float deltaTime, ArrayList<Enemy> enemies){
+    public void update(float deltaTime, ArrayList<Enemy> enemies) {
 
-        for (Enemy e : enemies)
-        {
-            if (textureSize/2*scale >= Vector2.dst(position.x+textureSize*scale/2,position.y+textureSize*scale/2,e.getPosition().x+e.getEnemySize()*scale/2,e.getPosition().y+e.getEnemySize()*scale/2)) {
+        for (Enemy e : enemies) {
+            if (textureSize / 2 * scale >= Vector2.dst(position.x + textureSize * scale / 2, position.y + textureSize * scale / 2, e.getPosition().x + e.getEnemySize() * scale / 2, e.getPosition().y + e.getEnemySize() * scale / 2)) {
 
-                if(!attackedEnemies.contains(e.hashCode())) {
+                if (!attackedEnemies.contains(e.hashCode())) {
                     attackedEnemies.add(e.hashCode());
 
-                    if (Objects.equals(name, "roadNeedles"))
-                    {
+                    if (Objects.equals(name, "roadNeedles")) {
                         attackedEnemies.add(e.hashCode());
                         e.dealDmg(dmg);
-                    }
-                    else if (Objects.equals(name, "roadSticky"))
-                    {
+                    } else if (Objects.equals(name, "roadSticky")) {
                         e.changeSpeed(slow);
                         attackedEnemies.add(e.hashCode());
                         slowedEnemies.add(e);
                     }
 
-                    usesLeft-=1;
-                    if (getBase().getRoadObstacleId()==this.hashCode())
-                    {
+                    usesLeft -= 1;
+                    if (getBase().getRoadObstacleId() == this.hashCode()) {
                         getBase().setUsesLeft(usesLeft);
                     }
 
@@ -195,30 +188,24 @@ public class RoadObstacle extends Actor {
 
             }
 
-            if (Objects.equals(e.getName(), "summoner"))
-            {
-                for (Enemy eS: e.getSummonedList())
-                {
-                    if (textureSize/2*scale >= Vector2.dst(position.x+textureSize*scale/2,position.y+textureSize*scale/2,eS.getPosition().x+eS.getEnemySize()*scale/2,eS.getPosition().y+eS.getEnemySize()*scale/2)) {
+            if (Objects.equals(e.getName(), "summoner")) {
+                for (Enemy eS : e.getSummonedList()) {
+                    if (textureSize / 2 * scale >= Vector2.dst(position.x + textureSize * scale / 2, position.y + textureSize * scale / 2, eS.getPosition().x + eS.getEnemySize() * scale / 2, eS.getPosition().y + eS.getEnemySize() * scale / 2)) {
 
-                        if(!attackedEnemies.contains(eS.hashCode())) {
+                        if (!attackedEnemies.contains(eS.hashCode())) {
                             attackedEnemies.add(eS.hashCode());
 
-                            if (Objects.equals(name, "roadNeedles"))
-                            {
+                            if (Objects.equals(name, "roadNeedles")) {
                                 attackedEnemies.add(eS.hashCode());
                                 eS.dealDmg(dmg);
-                            }
-                            else if (Objects.equals(name, "roadSticky"))
-                            {
+                            } else if (Objects.equals(name, "roadSticky")) {
                                 eS.changeSpeed(slow);
                                 attackedEnemies.add(eS.hashCode());
                                 slowedEnemies.add(eS);
                             }
 
-                            usesLeft-=1;
-                            if (getBase().getRoadObstacleId()==this.hashCode())
-                            {
+                            usesLeft -= 1;
+                            if (getBase().getRoadObstacleId() == this.hashCode()) {
                                 getBase().setUsesLeft(usesLeft);
                             }
 
@@ -233,30 +220,23 @@ public class RoadObstacle extends Actor {
             }
 
 
-
-
         }
 
         Iterator<Enemy> eIterator = slowedEnemies.iterator();
         while (eIterator.hasNext()) {
             Enemy e = eIterator.next();
 
-            if (textureSize/2*scale < Vector2.dst(position.x+textureSize*scale/2,position.y+textureSize*scale/2,e.getPosition().x+e.getEnemySize()*scale/2,e.getPosition().y+e.getEnemySize()*scale/2))
-            {
-                e.changeSpeed(1f/slow);
+            if (textureSize / 2 * scale < Vector2.dst(position.x + textureSize * scale / 2, position.y + textureSize * scale / 2, e.getPosition().x + e.getEnemySize() * scale / 2, e.getPosition().y + e.getEnemySize() * scale / 2)) {
+                e.changeSpeed(1f / slow);
                 eIterator.remove();
             }
-
         }
-
-
     }
 
 
-    public void render(SpriteBatch batch){
-        batch.draw(texture, position.x, position.y,textureSize*scale,textureSize*scale);
+    public void render(SpriteBatch batch) {
+        batch.draw(texture, position.x, position.y, textureSize * scale, textureSize * scale);
     }
-
 
 
 }

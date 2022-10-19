@@ -98,8 +98,8 @@ public class GameScreen implements Screen {
         if (!isLocal)
             actualGame.put("login", game.getLogin());
 
-        enemies = fileReader.downloadFileAsJSONObject("assets/enemies.json");
-        turretLevels = fileReader.downloadFileAsJSONObject("assets/towers.json");
+        enemies = fileReader.downloadFileAsJSONObject("assets/data/enemies.json");
+        turretLevels = fileReader.downloadFileAsJSONObject("assets/data/towers.json");
         operationsArr = GameFunctions.getOperationsArr(this);
         base = new Base(actualGame, operationsArr);
         tipsManager = new TipsManager(languageManager, font, base, scale);
@@ -433,7 +433,7 @@ public class GameScreen implements Screen {
             }
         };
         Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
-        infoDialog.text("Brak wystarczającej ilości złota", labelStyle);
+        infoDialog.text(languageManager.getValue(languageManager.getLanguage(), "noGold"), labelStyle);
         infoDialog.button(bBackInfoDialog).padBottom(16);
         infoDialog.show(pauseStage);
         base.setState(Base.State.Paused);
@@ -447,6 +447,7 @@ public class GameScreen implements Screen {
             }
         };
         Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
+
         Random eventRandom = new Random();
         int eventChance = eventRandom.nextInt(0, 3);
         int eventPriority = eventChance;
@@ -458,19 +459,25 @@ public class GameScreen implements Screen {
         }
 
         if (eventChance == 0) {
-            eventDialog.text(languageManager.getValue(languageManager.getLanguage(), "eventDamage"), labelStyle);
+            Label label = new Label(languageManager.getValue(languageManager.getLanguage(), "eventDamage"), labelStyle);
+            label.setAlignment(Align.center);
+            eventDialog.text(label);
             base.damageBase(5);
             eventDialog.button(bBackEventDialog).padBottom(16);
             eventDialog.show(pauseStage);
             base.setState(Base.State.Paused);
         } else if (eventChance == 1) {
-            eventDialog.text(languageManager.getValue(languageManager.getLanguage(), "eventGold"), labelStyle);
+            Label label = new Label(languageManager.getValue(languageManager.getLanguage(), "eventGold"), labelStyle);
+            label.setAlignment(Align.center);
+            eventDialog.text(label);
             base.increaseMoney(50);
             eventDialog.button(bBackEventDialog).padBottom(16);
             eventDialog.show(pauseStage);
             base.setState(Base.State.Paused);
         } else if (eventChance == 2) {
-            eventDialog.text(languageManager.getValue(languageManager.getLanguage(), "eventDiamond"), labelStyle);
+            Label label = new Label(languageManager.getValue(languageManager.getLanguage(), "eventDiamond"), labelStyle);
+            label.setAlignment(Align.center);
+            eventDialog.text(label);
             base.increaseDiamonds(1);
             eventDialog.button(bBackEventDialog).padBottom(16);
             eventDialog.show(pauseStage);
@@ -487,7 +494,7 @@ public class GameScreen implements Screen {
     public void show() {
         Gdx.input.setInputProcessor(stage);
 
-        upgradeManager = new UpgradeManager(languageManager, font, base, fileReader.downloadFileAsJSONObject("assets/upgrades.json"), actualGame.getJSONArray("unlockedUpgrades"), scale);
+        upgradeManager = new UpgradeManager(languageManager, font, base, fileReader.downloadFileAsJSONObject("assets/data/upgrades.json"), actualGame.getJSONArray("unlockedUpgrades"), scale);
 
         Texture pauseDialogBanner = new Texture(new FileHandle("assets/backgrounds/profile_banner.png"));
 

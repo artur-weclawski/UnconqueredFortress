@@ -40,7 +40,7 @@ public class MenuScreen implements Screen  {
     public Skin images, images_settings, images_default;
     public Stage stage;
     public Table table_bExit, table_bPlay, table_bSettings, table_bLogin, table_bCredits, table_dialogLogin, table_dialogRegister;
-    private TextButton.TextButtonStyle textButtonStyle_bDialogExit, textButtonStyle_tDialogStayLogged, textButtonStyle_bExit, textButtonStyle_bPlay, textButtonStyle_bSettings, textButtonStyle_bCredits, textButtonStyle_bLogin, textButtonStyle_bDialogLogin, textButtonStyle_cDialogStayLogged;
+    private TextButton.TextButtonStyle textButtonStyle_bDialogExit, textButtonStyle_bExit, textButtonStyle_bPlay, textButtonStyle_bSettings, textButtonStyle_bCredits, textButtonStyle_bLogin, textButtonStyle_bDialogLogin, textButtonStyle_cDialogStayLogged;
     private TextField.TextFieldStyle textFieldStyle, formTextFieldStyle, titleTextFieldStyle, errorTextFieldStyle, textTitleTextFieldStyle;
     private ConnectionManager connectionManager;
     private ButtonStyleManager buttonStyleManager;
@@ -602,7 +602,6 @@ public class MenuScreen implements Screen  {
         textButtonStyle_bLogin = new TextButton.TextButtonStyle();
         textButtonStyle_bDialogLogin = new TextButton.TextButtonStyle();
         textButtonStyle_cDialogStayLogged = new TextButton.TextButtonStyle();
-        textButtonStyle_tDialogStayLogged = new TextButton.TextButtonStyle();
         textButtonStyle_bDialogExit =  new TextButton.TextButtonStyle();
 
         backgroundMusic = game.getMusic();

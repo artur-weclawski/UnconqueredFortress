@@ -18,12 +18,12 @@ public class LanguageManager {
 
     public String getValue(String language, String name) {
         if (language.equals("English")) {
-            String jsonPath = "assets/english.json";
+            String jsonPath = "assets/languages/english.json";
             JsonReader json = new JsonReader();
             JsonValue base = json.parse(Gdx.files.internal(jsonPath));
             return base.getString(name);
         } else {
-            String jsonPath = "assets/polski.json";
+            String jsonPath = "assets/languages/polski.json";
             JsonReader json = new JsonReader();
             JsonValue base = json.parse(Gdx.files.internal(jsonPath));
             return base.getString(name);
