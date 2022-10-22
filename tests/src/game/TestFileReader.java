@@ -34,12 +34,7 @@ public class TestFileReader {
         return file.exists();
     }
     public void setSave(JSONObject save){
-        String jsonPath = null;
-        switch (save.getInt("profileNumber")) {
-            case 1 -> jsonPath = "../save/save01l.json";
-            case 2 -> jsonPath = "../save/save02l.json";
-            case 3 -> jsonPath = "../save/save03l.json";
-        }
+        String jsonPath = "../save/save0"+ save.getInt("profileNumber") +"l.json";
 
         FileHandle file = Gdx.files.local(jsonPath);
         Json json = new Json();
