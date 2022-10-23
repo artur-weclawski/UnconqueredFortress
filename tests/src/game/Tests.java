@@ -111,8 +111,6 @@ public class Tests {
         if(testFileReader.fileExists("../save/save099l.json")){
             fail("Plik nie został usunięty.");
         }
-
-
     }
 
     //@Test
