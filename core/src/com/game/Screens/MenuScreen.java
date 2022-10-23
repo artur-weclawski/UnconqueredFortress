@@ -169,8 +169,8 @@ public class MenuScreen implements Screen  {
         tDialogRegisterErrors.setAlignment(Align.center);
 
         tDialogRegisterTextTitle.setDisabled(true);
-        tDialogRegisterTextTitle.setAlignment(Align.right);
-        tDialogRegisterTextTitle.setSize(150,30);
+        tDialogRegisterTextTitle.setAlignment(Align.center);
+        tDialogRegisterTextTitle.setHeight(30);
         tDialogRegisterTextLogin.setDisabled(true);
         tDialogRegisterTextLogin.setAlignment(Align.center);
         tDialogRegisterTextMail.setDisabled(true);
@@ -220,13 +220,8 @@ public class MenuScreen implements Screen  {
 
         // Register Dialog
         table_dialogRegister.setBounds(0,0,360,420);
-        table_dialogRegister.row().colspan(2).width(256).align(Align.center).padBottom(12);
-        if(languageManager.getLanguage().equals("Polski")) {
-            table_dialogRegister.add(tDialogRegisterTextTitle).align(Align.center).expandX().padRight(24);
-        } else {
-            table_dialogRegister.add(tDialogRegisterTextTitle).align(Align.left).expandX();
-        }
-
+        table_dialogRegister.row().colspan(2).width(320).align(Align.center).padBottom(12);
+        table_dialogRegister.add(tDialogRegisterTextTitle).align(Align.center).expandX();
         table_dialogRegister.row().padBottom(12);
         table_dialogRegister.add(tDialogRegisterTextLogin).align(Align.center);
         table_dialogRegister.add(fDialogRegisterLogin).align(Align.center);
@@ -561,7 +556,7 @@ public class MenuScreen implements Screen  {
         fontTitle = new BitmapFont();
         fontText = new BitmapFont();
 
-        parameter.size = (int) (32 * ((Gdx.graphics.getWidth() / 1280.0)));
+        parameter.size = (int) (20 * ((Gdx.graphics.getWidth() / 1280.0)));
         parameter.color = Color.valueOf("938672");
         parameter.characters = "ąćęłńóśżźabcdefghijklmnopqrstuvwxyzĄĆĘÓŁŃŚŻŹABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;:,{}\"´`'<>";
 
