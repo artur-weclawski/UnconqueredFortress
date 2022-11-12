@@ -57,16 +57,11 @@ public class ProfileCloudScreen implements Screen {
     private int saveToDelete;
     private ProfileManager profileManager;
 
-    public ProfileCloudScreen(Main game, JSONObject loadResponse){
+    public ProfileCloudScreen(Main game, JSONObject loadResponse, FileReader fileReader, LanguageManager languageManager){
         this.game = game;
         stage = new Stage();
-        fileReader = new FileReader();
-        fileReader.downloadSettings();
-        if(fileReader.getLanguageValue() != null) {
-            languageManager = new LanguageManager(fileReader.getLanguageValue());
-        } else {
-            languageManager = new LanguageManager("English");
-        }
+        this.fileReader = fileReader;
+        this.languageManager = languageManager;
 
         profileManager = new ProfileManager();
 
@@ -133,7 +128,7 @@ public class ProfileCloudScreen implements Screen {
                         public void clicked(InputEvent event, float x, float y) {
                             System.out.println("zostałem wybrany");
                             GameState.setGameState(GameState.PLAYING);
-                            game.setScreen(new GameScreen(game, save1, false));
+                            game.setScreen(new GameScreen(game, save1, false, fileReader, languageManager));
                         }
                     });
 
@@ -163,7 +158,7 @@ public class ProfileCloudScreen implements Screen {
                         @Override
                         public void clicked(InputEvent event, float x, float y) {
                             GameState.setGameState(GameState.PLAYING);
-                            game.setScreen(new GameScreen(game, save2, false));
+                            game.setScreen(new GameScreen(game, save2, false, fileReader, languageManager));
                         }
                     });
 
@@ -193,7 +188,7 @@ public class ProfileCloudScreen implements Screen {
                         @Override
                         public void clicked(InputEvent event, float x, float y) {
                             GameState.setGameState(GameState.PLAYING);
-                            game.setScreen(new GameScreen(game, save3, false));
+                            game.setScreen(new GameScreen(game, save3, false, fileReader, languageManager));
                         }
                     });
 
@@ -256,7 +251,7 @@ public class ProfileCloudScreen implements Screen {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
                 if (keycode == Input.Keys.ESCAPE) {
-                    game.setScreen(new MenuScreen(game));
+                    game.setScreen(new MenuScreen(game, fileReader, languageManager));
                     dispose();
                     return true;
                 }
@@ -273,7 +268,7 @@ public class ProfileCloudScreen implements Screen {
         bOtherScreen.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new ProfileLocalScreen(game));
+                game.setScreen(new ProfileLocalScreen(game, fileReader, languageManager));
             }
         });
         newGameDialog = new Dialog("", new Window.WindowStyle(font, Color.WHITE, new TextureRegionDrawable(new TextureRegion(loginRegisterDialogBackground)))) {
@@ -320,7 +315,7 @@ public class ProfileCloudScreen implements Screen {
             public void clicked(InputEvent event, float x, float y){
                 connectionManager.requestSend(new JSONObject().put("login", game.getLogin()).put("profileNumber", saveToDelete), "api/deleteSave");
                 removeDeletedFromResponse();
-                game.setScreen(new ProfileCloudScreen(game,loadResponse));
+                game.setScreen(new ProfileCloudScreen(game,loadResponse, fileReader, languageManager));
             }
         });
 
@@ -400,7 +395,7 @@ public class ProfileCloudScreen implements Screen {
                 if (chosenDifficulty !=null) {
                     System.out.println("Stworzono gre na profilu " + chosenProfile + "o poziomie trudnosci " + chosenDifficulty);
                     GameState.setGameState(GameState.PLAYING);
-                    game.setScreen(new GameScreen(game,profileManager.createEmptySave(chosenDifficulty, chosenProfile, tDialogSeedValue.getText()), false));
+                    game.setScreen(new GameScreen(game,profileManager.createEmptySave(chosenDifficulty, chosenProfile, tDialogSeedValue.getText()), false, fileReader, languageManager));
                 }
             }
         });
@@ -417,7 +412,7 @@ public class ProfileCloudScreen implements Screen {
         bBack.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new MenuScreen(game));
+                game.setScreen(new MenuScreen(game, fileReader, languageManager));
             }
         });
 
@@ -469,7 +464,7 @@ public class ProfileCloudScreen implements Screen {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         uploadAndDelete(saveNumber, finalI, saveToMigrate);
-                        game.setScreen(new ProfileLocalScreen(game));
+                        game.setScreen(new ProfileLocalScreen(game, fileReader, languageManager));
                     }
                 });
                 bMigrateSaveDialogBack.addListener(new ClickListener() {

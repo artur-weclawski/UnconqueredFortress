@@ -61,15 +61,13 @@ public class TowerManager {
     }
 
     public void update(float deltaTime) {
-        for (Tower t : towers) {
+        for (Tower t : towers)
             t.update(deltaTime, enemies);
-        }
     }
 
     public void render(SpriteBatch spritebatch, ShapeRenderer shapeRenderer) {
-        for (Tower t : towers) {
+        for (Tower t : towers)
             t.render(spritebatch, shapeRenderer);
-        }
     }
 
     public void disableListeners() {

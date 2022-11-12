@@ -6,6 +6,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.game.Manager.ConnectionManager;
 import com.game.Manager.FileReader;
+import com.game.Manager.LanguageManager;
 import com.game.Screens.MenuScreen;
 import org.json.JSONObject;
 
@@ -15,6 +16,7 @@ public class Main extends Game {
 	private boolean isLogged;
 	private String login;
 	private ConnectionManager connectionManager;
+	private LanguageManager languageManager;
 
 	public void setIsLogged(boolean isLogged)
 	{
@@ -43,6 +45,15 @@ public class Main extends Game {
 		batch = new SpriteBatch();
 		FileReader fileReader = new FileReader();
 		fileReader.downloadSettings();
+
+		if(fileReader.getLanguageValue() != null) {
+			languageManager = new LanguageManager(fileReader.getLanguageValue());
+		} else {
+			languageManager = new LanguageManager("English");
+		}
+
+
+
 		isLogged = false;
 		if(fileReader.getResolutionValue() != null){
 			switch (fileReader.getResolutionValue()) {
@@ -56,7 +67,7 @@ public class Main extends Game {
 		cleanSound = Gdx.audio.newMusic(Gdx.files.internal("assets/sound/cleanSound.ogg"));
 		sellSound = Gdx.audio.newMusic(Gdx.files.internal("assets/sound/sellSound.ogg"));
 		buySound = Gdx.audio.newMusic(Gdx.files.internal("assets/sound/buySound.ogg"));
-		setScreen(new MenuScreen(this));
+		setScreen(new MenuScreen(this,fileReader, languageManager));
 
 	}
 	@Override

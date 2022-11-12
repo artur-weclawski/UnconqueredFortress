@@ -63,15 +63,10 @@ public class ProfileLocalScreen implements Screen {
     private int saveToDelete;
     private ProfileManager profileManager;
 
-    public ProfileLocalScreen(Main game){
+    public ProfileLocalScreen(Main game, FileReader fileReader, LanguageManager languageManager){
         this.game = game;
-        fileReader = new FileReader();
-        fileReader.downloadSettings();
-        if(fileReader.getLanguageValue() != null) {
-            languageManager = new LanguageManager(fileReader.getLanguageValue());
-        } else {
-            languageManager = new LanguageManager("English");
-        }
+        this.fileReader = fileReader;
+        this.languageManager = languageManager;
 
         profileManager = new ProfileManager();
 
@@ -221,7 +216,7 @@ public class ProfileLocalScreen implements Screen {
                 if (chosenDifficulty !=null) {
                     System.out.println("Stworzono gre na profilu " + chosenProfile + "o poziomie trudnosci " + chosenDifficulty);
                     GameState.setGameState(GameState.PLAYING);
-                    game.setScreen(new GameScreen(game, profileManager.createEmptySave(chosenDifficulty, chosenProfile, tDialogSeedValue.getText()), true));
+                    game.setScreen(new GameScreen(game, profileManager.createEmptySave(chosenDifficulty, chosenProfile, tDialogSeedValue.getText()), true, fileReader, languageManager));
                 }
             }
         });
@@ -275,7 +270,7 @@ public class ProfileLocalScreen implements Screen {
                 public void clicked(InputEvent event, float x, float y) {
                     System.out.println("zostałem wybrany");
                     GameState.setGameState(GameState.PLAYING);
-                    game.setScreen(new GameScreen(game, save1, true));
+                    game.setScreen(new GameScreen(game, save1, true, fileReader, languageManager));
 
                 }
             });
@@ -316,7 +311,7 @@ public class ProfileLocalScreen implements Screen {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     GameState.setGameState(GameState.PLAYING);
-                    game.setScreen(new GameScreen(game, save2, true));
+                    game.setScreen(new GameScreen(game, save2, true, fileReader, languageManager));
                 }
             });
         } else {
@@ -355,7 +350,7 @@ public class ProfileLocalScreen implements Screen {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     GameState.setGameState(GameState.PLAYING);
-                    game.setScreen(new GameScreen(game, save3, true));
+                    game.setScreen(new GameScreen(game, save3, true, fileReader, languageManager));
                 }
             });
         } else {
@@ -383,7 +378,7 @@ public class ProfileLocalScreen implements Screen {
         bBack.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new MenuScreen(game));
+                game.setScreen(new MenuScreen(game, fileReader, languageManager));
             }
         });
 
@@ -391,7 +386,7 @@ public class ProfileLocalScreen implements Screen {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
                 if (keycode == Input.Keys.ESCAPE) {
-                    game.setScreen(new MenuScreen(game));
+                    game.setScreen(new MenuScreen(game, fileReader, languageManager));
                     dispose();
                     return true;
                 }
@@ -434,7 +429,7 @@ public class ProfileLocalScreen implements Screen {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
 
-                    game.setScreen(new ProfileCloudScreen(game, loadResponse));
+                    game.setScreen(new ProfileCloudScreen(game, loadResponse, fileReader, languageManager));
 
                 }
             });
@@ -497,7 +492,7 @@ public class ProfileLocalScreen implements Screen {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         uploadAndDelete(saveNumber, finalI);
-                        game.setScreen(new ProfileLocalScreen(game));
+                        game.setScreen(new ProfileLocalScreen(game, fileReader, languageManager));
                     }
                 });
                 bMigrateSaveDialogBack.addListener(new ClickListener() {
@@ -530,7 +525,7 @@ public class ProfileLocalScreen implements Screen {
 
     public void deleteSave(int saveNumber){
         fileReader.deleteSave(saveNumber);
-        game.setScreen(new ProfileLocalScreen(game));
+        game.setScreen(new ProfileLocalScreen(game, fileReader, languageManager));
     }
 
     @Override

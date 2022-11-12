@@ -46,17 +46,12 @@ public class CreditsScreen implements Screen {
     private FileReader fileReader;
     private LanguageManager languageManager;
 
-    public CreditsScreen(Main game){
+    public CreditsScreen(Main game, FileReader fileReader, LanguageManager languageManager){
         this.game = game;
         textFieldStyleManager = new TextFieldStyleManager();
-        fileReader = new FileReader();
-        fileReader.downloadSettings();
+        this.fileReader = fileReader;
+        this.languageManager = languageManager;
 
-        if(fileReader.getLanguageValue() != null) {
-            languageManager = new LanguageManager(fileReader.getLanguageValue());
-        } else {
-            languageManager = new LanguageManager("English");
-        }
 
         initSettingsUI();
     }
@@ -68,7 +63,7 @@ public class CreditsScreen implements Screen {
         stage.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new MenuScreen(game));
+                game.setScreen(new MenuScreen(game,fileReader, languageManager));
                 dispose();
             }
 
@@ -79,7 +74,7 @@ public class CreditsScreen implements Screen {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
                 if (keycode == Input.Keys.ESCAPE) {
-                    game.setScreen(new MenuScreen(game));
+                    game.setScreen(new MenuScreen(game,fileReader, languageManager));
                     dispose();
                     return true;
                 }
@@ -189,7 +184,7 @@ public class CreditsScreen implements Screen {
                 table_credits.setBounds(0, table_credits.getY()+1, Gdx.graphics.getWidth(), Gdx.graphics.getWidth() / 10 * 3);
 
                 if (table_credits.getY() > Gdx.graphics.getHeight()) {
-                    game.setScreen(new MenuScreen(game));
+                    game.setScreen(new MenuScreen(game,fileReader, languageManager));
                     dispose();
                 }
             }

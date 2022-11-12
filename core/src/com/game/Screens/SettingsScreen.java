@@ -53,17 +53,12 @@ public class SettingsScreen implements Screen {
     private LanguageManager languageManager;
     private Dialog backDialog;
     private boolean isDialog = false;
-    public SettingsScreen (Main game){
+    public SettingsScreen (Main game, FileReader fileReader, LanguageManager languageManager){
         this.game = game;
         resolutions = new Resolutions();
-        fileReader = new FileReader();
-        fileReader.downloadSettings();
+        this.fileReader = fileReader;
+        this.languageManager = languageManager;
 
-        if(fileReader.getLanguageValue() != null){
-            languageManager = new LanguageManager(fileReader.getLanguageValue());
-        } else {
-            languageManager = new LanguageManager("English");
-        }
 
         initSettingsUI();
         buttonStyleManager = new ButtonStyleManager();
@@ -196,7 +191,7 @@ public class SettingsScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y){
                 if(tLanguageField.getText().equals(fileReader.getLanguageValue()) && tResolutionField.getText().equals(fileReader.getResolutionValue()) && Math.round(volumeMusicSlider.getValue()) == fileReader.getVolumeValue() && Math.round(volumeEffectsSlider.getValue()) == fileReader.getVolumeEffectsValue()){
-                    game.setScreen(new MenuScreen(game));
+                    game.setScreen(new MenuScreen(game, fileReader, languageManager));
                     dispose();
                 } else {
                     isDialog = true;
@@ -223,7 +218,7 @@ public class SettingsScreen implements Screen {
             public boolean keyDown(InputEvent event, int keycode) {
                 if (keycode == Input.Keys.ESCAPE) {
                     if(tLanguageField.getText().equals(fileReader.getLanguageValue()) && tResolutionField.getText().equals(fileReader.getResolutionValue()) && Math.round(volumeMusicSlider.getValue()) == fileReader.getVolumeValue() && Math.round(volumeEffectsSlider.getValue()) == fileReader.getVolumeEffectsValue()){
-                        game.setScreen(new MenuScreen(game));
+                        game.setScreen(new MenuScreen(game, fileReader, languageManager));
                         dispose();
                     } else if(!isDialog) {
                         isDialog = true;
@@ -250,12 +245,11 @@ public class SettingsScreen implements Screen {
         bBackDialog.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y){
-                game.setScreen(new MenuScreen(game));
+                game.setScreen(new MenuScreen(game, fileReader, languageManager));
                 dispose();
             }
         });
 
-        System.out.println(resolutionsList);
         bSave.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y){
@@ -271,7 +265,8 @@ public class SettingsScreen implements Screen {
                 }
 
                 fileReader.setSettings(tResolutionField.getText(), volumeMusicSlider.getValue(), volumeEffectsSlider.getValue(),tLanguageField.getText());
-                game.setScreen(new MenuScreen(game));
+                languageManager = new LanguageManager(tLanguageField.getText());
+                game.setScreen(new MenuScreen(game, fileReader, languageManager));
                 dispose();
             }
         });

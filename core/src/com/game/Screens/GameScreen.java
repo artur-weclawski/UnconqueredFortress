@@ -76,7 +76,7 @@ public class GameScreen implements Screen {
     private Music cleanSound, sellSound, buySound;
     private ProfileManager profileManager;
 
-    public GameScreen(Main game, JSONObject save, boolean isLocal) {
+    public GameScreen(Main game, JSONObject save, boolean isLocal, FileReader fileReader, LanguageManager languageManager) {
         this.game = game;
         this.isLocal = isLocal;
         scale = (float) (Gdx.graphics.getWidth() / 1280.0);
@@ -84,14 +84,8 @@ public class GameScreen implements Screen {
         lastClickedMapTile = new LastClickedTile();
         lastClickedOperationTile = new LastClickedTile();
         resolutions = new Resolutions();
-        fileReader = new FileReader();
-        fileReader.downloadSettings();
-        if (fileReader.getLanguageValue() != null) {
-            languageManager = new LanguageManager(fileReader.getLanguageValue());
-        } else {
-            languageManager = new LanguageManager("English");
-        }
-
+        this.fileReader = fileReader;
+        this.languageManager = languageManager;
         initSettingsUI();
 
         actualGame = save;
@@ -516,6 +510,7 @@ public class GameScreen implements Screen {
 
                 base.setState(Base.State.Paused);
                 statsTableManager.setMultipliersPage(0);
+                statsTableManager.setButtonVisibility();
                 base.setInfoToDisplay(4);
 
                 upgradeDialog = new Dialog("", new Window.WindowStyle(font, Color.WHITE, new TextureRegionDrawable(new TextureRegion(new Texture(new FileHandle("assets/dialog/upgrade_dialog_720.png"))))));
@@ -571,7 +566,7 @@ public class GameScreen implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 if (enemyManager.getEnemiesLeft() == 0) {
                     saveGame();
-                    game.setScreen(new MenuScreen(game));
+                    game.setScreen(new MenuScreen(game,fileReader, languageManager));
                 } else
                     System.out.println("nie mozna zapisac");
             }
@@ -582,21 +577,21 @@ public class GameScreen implements Screen {
         bExitDialog.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new MenuScreen(game));
+                game.setScreen(new MenuScreen(game,fileReader, languageManager));
             }
         });
 
         bGameOverNewMap.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(game, profileManager.getNewSave(actualGame, base), isLocal));
+                game.setScreen(new GameScreen(game, profileManager.getNewSave(actualGame, base), isLocal, fileReader, languageManager));
             }
         });
 
         bGameOverReplay.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(game, profileManager.getReplaySave(actualGame, base), isLocal));
+                game.setScreen(new GameScreen(game, profileManager.getReplaySave(actualGame, base), isLocal, fileReader, languageManager));
             }
         });
 
@@ -604,14 +599,14 @@ public class GameScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 saveGame();
-                game.setScreen(new MenuScreen(game));
+                game.setScreen(new MenuScreen(game,fileReader, languageManager));
             }
         });
 
         bGameOverExit.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new MenuScreen(game));
+                game.setScreen(new MenuScreen(game, fileReader, languageManager));
             }
         });
 
@@ -781,6 +776,8 @@ public class GameScreen implements Screen {
         stage.act(delta);
         stage.draw();
 
+        buildArr = roadObstaclesManager.getArr();
+
         if ((statsTableManager.getInfoToDisplay() != base.getInfoToDisplay()) || (base.getInfoToDisplay() == 1 && chosenOperation != base.getInfoToDisplayName()) || base.isShouldUpdateInfo()) {
             if (base.isShouldUpdateInfo())
                 base.setShouldUpdateInfo(false);
@@ -804,7 +801,7 @@ public class GameScreen implements Screen {
         switch (base.getState()) {
             case Running -> {
                 roadObstaclesManager.update(delta);
-                buildArr = roadObstaclesManager.getArr();
+
                 statsTableManager.update();
                 towerManager.update(delta);
                 enemyManager.update(delta);

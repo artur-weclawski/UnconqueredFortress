@@ -343,9 +343,9 @@ public class Tower extends Actor {
                     timeToShoot = reloadTime;
 
                     Vector2 direction = new Vector2(position.x - e.getPosition().x, position.y - e.getPosition().y);
-                    double x = Math.abs(position.x - e.getPosition().x);
+                    double x_Distance = Math.abs(position.x - e.getPosition().x);
                     double distance = Vector2.dst(position.x, position.y, e.getPosition().x, e.getPosition().y);
-                    double alfa = Math.acos(x / distance);
+                    double alfa = Math.acos(x_Distance / distance);
                     rotation = (float) Math.toDegrees(alfa);
 
                     if (direction.x <= 0 && direction.y <= 0)

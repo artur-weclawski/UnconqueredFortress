@@ -54,19 +54,16 @@ public class MenuScreen implements Screen  {
     public boolean stayLogged = false;
     public boolean isDialog = false;
 
-    public MenuScreen(Main game){
+    public MenuScreen(Main game, FileReader fileReader, LanguageManager languageManager){
         this.game = game;
+
+        this.fileReader = fileReader;
+        this.languageManager = languageManager;
 
         initSettingsUI();
         buttonStyleManager = new ButtonStyleManager();
         textFieldStyleManager = new TextFieldStyleManager();
-        fileReader = new FileReader();
-        fileReader.downloadSettings();
-        if(fileReader.getLanguageValue() != null) {
-            languageManager = new LanguageManager(fileReader.getLanguageValue());
-        } else {
-            languageManager = new LanguageManager("English");
-        }
+
 
         fileReader.downloadUserInfo();
         buttonStyleManager.setTextButtonStyle(textButtonStyle_bLogin, images, fontTitle, "tempmainlog", "tempmainlog");
@@ -440,7 +437,7 @@ public class MenuScreen implements Screen  {
             @Override
             public void clicked(InputEvent event, float x, float y){
                 GameState.setPreviousGameState(GameState.MENU);
-                game.setScreen(new ProfileLocalScreen(game));
+                game.setScreen(new ProfileLocalScreen(game, fileReader, languageManager));
                 dispose();
             }
         });
@@ -449,7 +446,7 @@ public class MenuScreen implements Screen  {
             @Override
             public void clicked(InputEvent event, float x, float y){
                 GameState.setPreviousGameState(GameState.MENU);
-                game.setScreen(new SettingsScreen(game));
+                game.setScreen(new SettingsScreen(game, fileReader, languageManager));
                 dispose();
             }
         });
@@ -459,7 +456,7 @@ public class MenuScreen implements Screen  {
             @Override
             public void clicked(InputEvent event, float x, float y){
                 GameState.setPreviousGameState(GameState.MENU);
-                game.setScreen(new CreditsScreen(game));
+                game.setScreen(new CreditsScreen(game, fileReader, languageManager));
                 backgroundMusic.dispose();
                 dispose();
             }
