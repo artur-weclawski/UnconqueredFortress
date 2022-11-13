@@ -57,12 +57,14 @@ public class ProfileCloudScreen implements Screen {
     private int saveToDelete;
     private ProfileManager profileManager;
 
+    private String language;
+
     public ProfileCloudScreen(Main game, JSONObject loadResponse, FileReader fileReader, LanguageManager languageManager){
         this.game = game;
         stage = new Stage();
         this.fileReader = fileReader;
         this.languageManager = languageManager;
-
+        this.language = languageManager.getLanguage();
         profileManager = new ProfileManager();
 
         this.loadResponse = loadResponse;
@@ -73,12 +75,12 @@ public class ProfileCloudScreen implements Screen {
         textFieldStyleManager = new TextFieldStyleManager();
 
         buttonStyleManager.setTextButtonStyle(textButtonStyle_bBack, images_default, font, "defaultButton", "defaultButton");
-        bBack = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bBack"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
+        bBack = new TextButton(languageManager.getValue(language, "bBack"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
         buttonStyleManager.setTextButtonStyle(textButtonStyle_bSave, images_default, font, "defaultButton", "defaultButton");
-        bPlay = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bPlay"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
+        bPlay = new TextButton(languageManager.getValue(language, "bPlay"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
 
-        bDialogCreate = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bDialogCreate"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
-        bDialogCancel = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bDialogCancel"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
+        bDialogCreate = new TextButton(languageManager.getValue(language, "bDialogCreate"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
+        bDialogCancel = new TextButton(languageManager.getValue(language, "bDialogCancel"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
 
         buttonStyleManager.setTextButtonStyle(textButtonStyle_cDialogDifficultyChecked, images_settings, font, "checkbox_on", "checkbox_on");
         buttonStyleManager.setTextButtonStyle(textButtonStyle_cDialogDifficultyUnchecked, images_settings, font, "checkbox_off", "checkbox_off");
@@ -276,10 +278,10 @@ public class ProfileCloudScreen implements Screen {
                 newGameDialog.cancel();
             }
         };
-        tDialogEasyDifficulty = new TextField(languageManager.getValue(languageManager.getLanguage(), "tEasyDifficulty"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
-        tDialogNormalDifficulty  = new TextField(languageManager.getValue(languageManager.getLanguage(), "tNormalDifficulty"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
-        tDialogHardDifficulty = new TextField(languageManager.getValue(languageManager.getLanguage(), "tHardDifficulty"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
-        tDialogSeed = new TextField(languageManager.getValue(languageManager.getLanguage(), "seed"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
+        tDialogEasyDifficulty = new TextField(languageManager.getValue(language, "tEasyDifficulty"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
+        tDialogNormalDifficulty  = new TextField(languageManager.getValue(language, "tNormalDifficulty"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
+        tDialogHardDifficulty = new TextField(languageManager.getValue(language, "tHardDifficulty"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
+        tDialogSeed = new TextField(languageManager.getValue(language, "seed"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
         tDialogSeed.setDisabled(true);
         tDialogSeed.setAlignment(Align.center);
         tDialogEasyDifficulty.setAlignment(Align.center);
@@ -287,7 +289,7 @@ public class ProfileCloudScreen implements Screen {
         tDialogHardDifficulty.setAlignment(Align.center);
         tDialogSeedValue = new TextField("", textFieldStyleManager.returnTextFieldStyle(seedFieldStyle));
         tDialogSeedValue.setAlignment(Align.center);
-        tDialogDifficulty = new TextField(languageManager.getValue(languageManager.getLanguage(), "difficulty_field"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
+        tDialogDifficulty = new TextField(languageManager.getValue(language, "difficulty_field"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
         tDialogDifficulty.setDisabled(true);
 
         deleteGameDialog = new Dialog("", new Window.WindowStyle(font, Color.WHITE, new TextureRegionDrawable(new TextureRegion(deleteDialogBackground)))) {
@@ -301,8 +303,8 @@ public class ProfileCloudScreen implements Screen {
         table_deleteDialog.setX(200);
         table_deleteDialog.setY(300);
 
-        bDeleteDialogDelete = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bDelete"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
-        bDeleteDialogCancel = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bDialogCancel"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
+        bDeleteDialogDelete = new TextButton(languageManager.getValue(language, "bDelete"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
+        bDeleteDialogCancel = new TextButton(languageManager.getValue(language, "bDialogCancel"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
 
 
 
@@ -418,8 +420,8 @@ public class ProfileCloudScreen implements Screen {
 
         tMigrateSaveText = new TextField(null, textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
         tMigrateSaveText.setAlignment(Align.center);
-        bMigrateSaveDialogOk = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bDownload"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
-        bMigrateSaveDialogBack = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bBack"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
+        bMigrateSaveDialogOk = new TextButton(languageManager.getValue(language, "bDownload"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
+        bMigrateSaveDialogBack = new TextButton(languageManager.getValue(language, "bBack"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
         table_migrateSave.setWidth(512);
         table_migrateSave.setHeight(160);
         table_migrateSave.setX(0);
@@ -444,7 +446,7 @@ public class ProfileCloudScreen implements Screen {
             table_migrateSave.row().padBottom(8);
             table_migrateSave.add(bMigrateSaveDialogBack).colspan(2);
             System.out.println("zajete");
-            tMigrateSaveText.setText(languageManager.getValue(languageManager.getLanguage(),"noAvailableSlots"));
+            tMigrateSaveText.setText(languageManager.getValue(language,"noAvailableSlots"));
             table_migrateSave.removeActor(bMigrateSaveDialogOk);
             bMigrateSaveDialogBack.addListener(new ClickListener() {
                 @Override
@@ -458,7 +460,7 @@ public class ProfileCloudScreen implements Screen {
 
         for(int i=1 ; i<=3; i++) {
             if(!fileReader.fileExists("save/save0"+i+"l.json")) {
-                tMigrateSaveText.setText(languageManager.getValue(languageManager.getLanguage(), "tDoYouWantDownload") + i+"?");
+                tMigrateSaveText.setText(languageManager.getValue(language, "tDoYouWantDownload") + i+"?");
                 int finalI = i;
                 bMigrateSaveDialogOk.addListener(new ClickListener() {
                     @Override

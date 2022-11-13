@@ -62,12 +62,13 @@ public class ProfileLocalScreen implements Screen {
     private boolean isDialog = false;
     private int saveToDelete;
     private ProfileManager profileManager;
+    private String language;
 
     public ProfileLocalScreen(Main game, FileReader fileReader, LanguageManager languageManager){
         this.game = game;
         this.fileReader = fileReader;
         this.languageManager = languageManager;
-
+        this.language = languageManager.getLanguage();
         profileManager = new ProfileManager();
 
         initProfileLocalUI();
@@ -77,15 +78,15 @@ public class ProfileLocalScreen implements Screen {
         textFieldStyleManager = new TextFieldStyleManager();
 
         buttonStyleManager.setTextButtonStyle(textButtonStyle_bBack, images_default, font, "defaultButton", "defaultButton");
-        bBack = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bBack"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
+        bBack = new TextButton(languageManager.getValue(language, "bBack"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
         buttonStyleManager.setTextButtonStyle(textButtonStyle_bSave, images_default, font, "defaultButton", "defaultButton");
-        bPlay = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bPlay"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
+        bPlay = new TextButton(languageManager.getValue(language, "bPlay"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
 
-        bDialogCreate = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bDialogCreate"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
-        bDialogCancel = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bDialogCancel"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
+        bDialogCreate = new TextButton(languageManager.getValue(language, "bDialogCreate"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
+        bDialogCancel = new TextButton(languageManager.getValue(language, "bDialogCancel"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
 
-        bDeleteDialogDelete = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bDelete"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
-        bDeleteDialogCancel = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bDialogCancel"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
+        bDeleteDialogDelete = new TextButton(languageManager.getValue(language, "bDelete"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
+        bDeleteDialogCancel = new TextButton(languageManager.getValue(language, "bDialogCancel"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
 
         buttonStyleManager.setTextButtonStyle(textButtonStyle_cDialogDifficultyChecked, images_settings, font, "checkbox_on", "checkbox_on");
         buttonStyleManager.setTextButtonStyle(textButtonStyle_cDialogDifficultyUnchecked, images_settings, font, "checkbox_off", "checkbox_off");
@@ -119,11 +120,11 @@ public class ProfileLocalScreen implements Screen {
             }
         };
 
-        tDialogEasyDifficulty = new TextField(languageManager.getValue(languageManager.getLanguage(), "tEasyDifficulty"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
-        tDialogNormalDifficulty  = new TextField(languageManager.getValue(languageManager.getLanguage(), "tNormalDifficulty"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
-        tDialogHardDifficulty = new TextField(languageManager.getValue(languageManager.getLanguage(), "tHardDifficulty"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
+        tDialogEasyDifficulty = new TextField(languageManager.getValue(language, "tEasyDifficulty"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
+        tDialogNormalDifficulty  = new TextField(languageManager.getValue(language, "tNormalDifficulty"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
+        tDialogHardDifficulty = new TextField(languageManager.getValue(language, "tHardDifficulty"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
 
-        tDialogSeed = new TextField(languageManager.getValue(languageManager.getLanguage(), "seed"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
+        tDialogSeed = new TextField(languageManager.getValue(language, "seed"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
         tDialogSeed.setDisabled(true);
         tDialogSeed.setAlignment(Align.center);
 
@@ -133,7 +134,7 @@ public class ProfileLocalScreen implements Screen {
 
         tDialogSeedValue = new TextField("", textFieldStyleManager.returnTextFieldStyle(seedFieldStyle));
         tDialogSeedValue.setAlignment(Align.center);
-        tDialogDifficulty = new TextField(languageManager.getValue(languageManager.getLanguage(), "difficulty_field"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
+        tDialogDifficulty = new TextField(languageManager.getValue(language, "difficulty_field"), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
         tDialogDifficulty.setDisabled(true);
         deleteGameDialog = new Dialog("", new Window.WindowStyle(font, Color.WHITE, new TextureRegionDrawable(new TextureRegion(deleteDialogBackground)))) {
             public void result(Object obj) {
@@ -421,7 +422,7 @@ public class ProfileLocalScreen implements Screen {
                         stage.addActor(migrationSave3);
                     }
                 } else {
-                    System.out.println(languageManager.getValue(languageManager.getLanguage(), loadResponse.getString("message")));
+                    System.out.println(languageManager.getValue(language, loadResponse.getString("message")));
                 }
             }).start();
 
@@ -437,8 +438,8 @@ public class ProfileLocalScreen implements Screen {
 
         tMigrateSaveText = new TextField(null, textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
         tMigrateSaveText.setAlignment(Align.center);
-        bMigrateSaveDialogOk = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bSend"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
-        bMigrateSaveDialogBack = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bBack"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
+        bMigrateSaveDialogOk = new TextButton(languageManager.getValue(language, "bSend"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
+        bMigrateSaveDialogBack = new TextButton(languageManager.getValue(language, "bBack"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bSave));
 
         table_migrateSave.setWidth(512);
         table_migrateSave.setHeight(160);
@@ -462,7 +463,7 @@ public class ProfileLocalScreen implements Screen {
 
         if (numberOfLoadedSaves==3) {
             System.out.println("zajete");
-            tMigrateSaveText.setText(languageManager.getValue(languageManager.getLanguage(),"noAvailableSlots"));
+            tMigrateSaveText.setText(languageManager.getValue(language,"noAvailableSlots"));
             table_migrateSave.removeActor(bMigrateSaveDialogOk);
             table_migrateSave.removeActor(bMigrateSaveDialogBack);
             table_migrateSave.row().padBottom(8);
@@ -486,7 +487,7 @@ public class ProfileLocalScreen implements Screen {
         Collections.sort(existSave);
         for(int i=1 ; i<=3; i++) {
             if (!existSave.contains(i)) {
-                tMigrateSaveText.setText(languageManager.getValue(languageManager.getLanguage(), "tDoYouWantSend") + i+"?");
+                tMigrateSaveText.setText(languageManager.getValue(language, "tDoYouWantSend") + i+"?");
                 int finalI = i;
                 bMigrateSaveDialogOk.addListener(new ClickListener() {
                     @Override

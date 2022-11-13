@@ -23,6 +23,7 @@ public class ProfileManager {
     }
 
     public Table createProfileTable(JSONObject save, BitmapFont font, LanguageManager languageManager, int x, String icon) {
+        String language = languageManager.getLanguage();
         Table t = new Table();
         t.setBounds(x, Gdx.graphics.getWidth() / 10, Gdx.graphics.getHeight() / 10 * 3, Gdx.graphics.getWidth() / 10 * 3);
         t.setBackground(new TextureRegionDrawable(new TextureRegion(new Texture(new FileHandle("assets/backgrounds/profile_banner.png")))));
@@ -31,15 +32,15 @@ public class ProfileManager {
         TextFieldStyleManager tSM = new TextFieldStyleManager();
         tSM.setTextFieldStyle(tFS, new Skin(new TextureAtlas("assets/buttons/buttons_settings.pack")), font, "empty_background", Color.WHITE);
 
-        TextField tDifficulty = new TextField(languageManager.getValue(languageManager.getLanguage(), "difficulty_field") + ": " + languageManager.getValue(languageManager.getLanguage(), save.getString("difficulty")), tSM.returnTextFieldStyle(tFS));
+        TextField tDifficulty = new TextField(languageManager.getValue(language, "difficulty_field") + ": " + languageManager.getValue(language, save.getString("difficulty")), tSM.returnTextFieldStyle(tFS));
         tDifficulty.setAlignment(Align.left);
-        TextField tFinishedMaps = new TextField(languageManager.getValue(languageManager.getLanguage(), "finishedmaps_field") + ": " + save.getInt("finishedMaps"), tSM.returnTextFieldStyle(tFS));
+        TextField tFinishedMaps = new TextField(languageManager.getValue(language, "finishedmaps_field") + ": " + save.getInt("finishedMaps"), tSM.returnTextFieldStyle(tFS));
         tFinishedMaps.setAlignment(Align.left);
-        TextField tWave = new TextField(languageManager.getValue(languageManager.getLanguage(), "wave_field") + ": " + save.getInt("wave"), tSM.returnTextFieldStyle(tFS));
+        TextField tWave = new TextField(languageManager.getValue(language, "wave_field") + ": " + save.getInt("wave"), tSM.returnTextFieldStyle(tFS));
         tWave.setAlignment(Align.left);
-        TextField tGold = new TextField(languageManager.getValue(languageManager.getLanguage(), "gold_field") + ": " + save.getInt("gold"), tSM.returnTextFieldStyle(tFS));
+        TextField tGold = new TextField(languageManager.getValue(language, "gold_field") + ": " + save.getInt("gold"), tSM.returnTextFieldStyle(tFS));
         tGold.setAlignment(Align.left);
-        TextField tDiamonds = new TextField(languageManager.getValue(languageManager.getLanguage(), "diamonds_field") + ": " + save.getInt("diamonds"), tSM.returnTextFieldStyle(tFS));
+        TextField tDiamonds = new TextField(languageManager.getValue(language, "diamonds_field") + ": " + save.getInt("diamonds"), tSM.returnTextFieldStyle(tFS));
         tDiamonds.setAlignment(Align.left);
         Image local = new Image(new Texture(new FileHandle(icon)));
         local.setHeight(32);

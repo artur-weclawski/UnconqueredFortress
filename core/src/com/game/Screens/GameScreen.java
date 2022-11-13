@@ -75,6 +75,7 @@ public class GameScreen implements Screen {
     private JSONObject turretLevels;
     private Music cleanSound, sellSound, buySound;
     private ProfileManager profileManager;
+    private String language;
 
     public GameScreen(Main game, JSONObject save, boolean isLocal, FileReader fileReader, LanguageManager languageManager) {
         this.game = game;
@@ -86,6 +87,7 @@ public class GameScreen implements Screen {
         resolutions = new Resolutions();
         this.fileReader = fileReader;
         this.languageManager = languageManager;
+        this.language = languageManager.getLanguage();
         initSettingsUI();
 
         actualGame = save;
@@ -124,7 +126,7 @@ public class GameScreen implements Screen {
         table_info = statsTableManager.getStatsTable();
 
         textFieldStyleManager.setTextFieldStyle(statsTextFieldStyle, images, font, "empty_background", Color.WHITE);
-        GameOverTitle = new TextField(languageManager.getValue(languageManager.getLanguage(), "Lose"), textFieldStyleManager.returnTextFieldStyle(statsTextFieldStyle));
+        GameOverTitle = new TextField(languageManager.getValue(language, "Lose"), textFieldStyleManager.returnTextFieldStyle(statsTextFieldStyle));
         GameOverTitle.setAlignment(Align.center);
 
         if (Gdx.graphics.getHeight() == 900) {
@@ -143,20 +145,20 @@ public class GameScreen implements Screen {
         buttonStyleManager.setTextButtonStyle(textButtonStyle_bNotAvailable, images_default, font, "defaultButtonNotAvailable", "defaultButtonNotAvailable");
 
         bTips = new TextButton("", buttonStyleManager.returnTextButtonStyle(textButtonStyle_bTips));
-        bSaveDialog = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bSave"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
-        bExitDialog = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bExit"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
-        bSaveAndExitDialog = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bSaveAndExit"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
-        bNextWave = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bNextWave"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
-        bResume = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bResume"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
-        bUpgrade = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bUpgrade"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
+        bSaveDialog = new TextButton(languageManager.getValue(language, "bSave"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
+        bExitDialog = new TextButton(languageManager.getValue(language, "bExit"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
+        bSaveAndExitDialog = new TextButton(languageManager.getValue(language, "bSaveAndExit"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
+        bNextWave = new TextButton(languageManager.getValue(language, "bNextWave"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
+        bResume = new TextButton(languageManager.getValue(language, "bResume"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
+        bUpgrade = new TextButton(languageManager.getValue(language, "bUpgrade"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
         buttonStyleManager.setTextButtonStyle(textButtonStyle_bPauseMenu, images_pause, font, "ButtonPauseUp", "ButtonPauseDown");
         bPauseMenu = new TextButton("", buttonStyleManager.returnTextButtonStyle(textButtonStyle_bPauseMenu));
-        bBackEventDialog = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bExit"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
-        bBackInfoDialog = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bExit"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
-        bGameOverNewMap = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bNewMap"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
-        bGameOverReplay = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bReplay"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
-        bGameOverSaveExit = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bSaveAndExit"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
-        bGameOverExit = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bExit"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
+        bBackEventDialog = new TextButton(languageManager.getValue(language, "bExit"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
+        bBackInfoDialog = new TextButton(languageManager.getValue(language, "bExit"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
+        bGameOverNewMap = new TextButton(languageManager.getValue(language, "bNewMap"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
+        bGameOverReplay = new TextButton(languageManager.getValue(language, "bReplay"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
+        bGameOverSaveExit = new TextButton(languageManager.getValue(language, "bSaveAndExit"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
+        bGameOverExit = new TextButton(languageManager.getValue(language, "bExit"), buttonStyleManager.returnTextButtonStyle(textButtonStyle_bBack));
 
         table_operations = GameFunctions.getOperationsTable(operationsArr, scale, bUpgrade);
         table_operations.setBackground(new TextureRegionDrawable(new TextureRegion(shopBackground)));
@@ -427,7 +429,7 @@ public class GameScreen implements Screen {
             }
         };
         Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
-        infoDialog.text(languageManager.getValue(languageManager.getLanguage(), "noGold"), labelStyle);
+        infoDialog.text(languageManager.getValue(language, "noGold"), labelStyle);
         infoDialog.button(bBackInfoDialog).padBottom(16);
         infoDialog.show(pauseStage);
         base.setState(Base.State.Paused);
@@ -453,7 +455,7 @@ public class GameScreen implements Screen {
         }
 
         if (eventChance == 0) {
-            Label label = new Label(languageManager.getValue(languageManager.getLanguage(), "eventDamage"), labelStyle);
+            Label label = new Label(languageManager.getValue(language, "eventDamage"), labelStyle);
             label.setAlignment(Align.center);
             eventDialog.text(label);
             base.damageBase(5);
@@ -461,7 +463,7 @@ public class GameScreen implements Screen {
             eventDialog.show(pauseStage);
             base.setState(Base.State.Paused);
         } else if (eventChance == 1) {
-            Label label = new Label(languageManager.getValue(languageManager.getLanguage(), "eventGold"), labelStyle);
+            Label label = new Label(languageManager.getValue(language, "eventGold"), labelStyle);
             label.setAlignment(Align.center);
             eventDialog.text(label);
             base.increaseMoney(50);
@@ -469,7 +471,7 @@ public class GameScreen implements Screen {
             eventDialog.show(pauseStage);
             base.setState(Base.State.Paused);
         } else if (eventChance == 2) {
-            Label label = new Label(languageManager.getValue(languageManager.getLanguage(), "eventDiamond"), labelStyle);
+            Label label = new Label(languageManager.getValue(language, "eventDiamond"), labelStyle);
             label.setAlignment(Align.center);
             eventDialog.text(label);
             base.increaseDiamonds(1);

@@ -45,13 +45,14 @@ public class CreditsScreen implements Screen {
     private TextFieldStyleManager textFieldStyleManager;
     private FileReader fileReader;
     private LanguageManager languageManager;
+    private String language;
 
     public CreditsScreen(Main game, FileReader fileReader, LanguageManager languageManager){
         this.game = game;
         textFieldStyleManager = new TextFieldStyleManager();
         this.fileReader = fileReader;
         this.languageManager = languageManager;
-
+        this.language = languageManager.getLanguage();
 
         initSettingsUI();
     }
@@ -85,10 +86,10 @@ public class CreditsScreen implements Screen {
         textFieldStyleManager.setTextFieldStyle(textFieldStyle, images, fontText, "empty_text", Color.WHITE);
         textFieldStyleManager.setTextFieldStyle(textTitleFieldStyle, images, fontTitle, "title_text", Color.WHITE);
 
-        tCreditsTitleGame = new TextField(languageManager.getValue(languageManager.getLanguage(), "creditsGame"), textFieldStyleManager.returnTextFieldStyle(textTitleFieldStyle));
-        tCreditsTitleMusic = new TextField(languageManager.getValue(languageManager.getLanguage(), "creditsMusic"), textFieldStyleManager.returnTextFieldStyle(textTitleFieldStyle));
-        tCreditsTitleGraphics = new TextField(languageManager.getValue(languageManager.getLanguage(), "creditsGraphics"), textFieldStyleManager.returnTextFieldStyle(textTitleFieldStyle));
-        tCreditsTitleStack = new TextField(languageManager.getValue(languageManager.getLanguage(), "creditsStack"), textFieldStyleManager.returnTextFieldStyle(textTitleFieldStyle));
+        tCreditsTitleGame = new TextField(languageManager.getValue(language, "creditsGame"), textFieldStyleManager.returnTextFieldStyle(textTitleFieldStyle));
+        tCreditsTitleMusic = new TextField(languageManager.getValue(language, "creditsMusic"), textFieldStyleManager.returnTextFieldStyle(textTitleFieldStyle));
+        tCreditsTitleGraphics = new TextField(languageManager.getValue(language, "creditsGraphics"), textFieldStyleManager.returnTextFieldStyle(textTitleFieldStyle));
+        tCreditsTitleStack = new TextField(languageManager.getValue(language, "creditsStack"), textFieldStyleManager.returnTextFieldStyle(textTitleFieldStyle));
 
         tCreditsGame1 = new TextField("Artur Węcławski", textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
         tCreditsGame2 = new TextField("Tomasz Wiejak", textFieldStyleManager.returnTextFieldStyle(textFieldStyle));

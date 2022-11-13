@@ -48,6 +48,7 @@ public class UpgradeManager {
 
     private float scale;
     private BitmapFont font;
+    private String language;
 
     public UpgradeManager(LanguageManager languageManager, BitmapFont font, Base base, JSONObject upgrades, JSONArray unlockedUpgrades, float scale) {
         this.images_upgrades = new Skin(new TextureAtlas("assets/icons/upgrade_icons.pack"));
@@ -57,13 +58,13 @@ public class UpgradeManager {
         this.upgrades = upgrades;
         this.unlockedUpgrades = unlockedUpgrades;
         this.scale = scale;
-
+        this.language = languageManager.getLanguage();
         buttonStyleManager = new ButtonStyleManager();
         textButtonStyle = new TextButton.TextButtonStyle();
         taButtonsDefault = new TextureAtlas("assets/buttons/buttons_default.pack");
         images_default = new Skin(taButtonsDefault);
         buttonStyleManager.setTextButtonStyle(textButtonStyle, images_default, font, "defaultButton", "defaultButton");
-        bUpgradeBack = new TextButton(languageManager.getValue(languageManager.getLanguage(), "bBack"), buttonStyleManager.returnTextButtonStyle(textButtonStyle));
+        bUpgradeBack = new TextButton(languageManager.getValue(language, "bBack"), buttonStyleManager.returnTextButtonStyle(textButtonStyle));
         Drawable tooltipBackground = new TextureRegionDrawable(new TextureRegion(new Texture(new FileHandle("assets/dialog/settings_dialog.png"))));
         textTooltipStyle = new TextTooltip.TextTooltipStyle();
         this.font.getData().markupEnabled = true;
@@ -91,7 +92,7 @@ public class UpgradeManager {
 
         table_upgrade.setBounds(0, 0, Gdx.graphics.getWidth() / 10 * 7, Gdx.graphics.getHeight() / 10 * 8);
         Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
-        table_upgrade.add(new Label(languageManager.getValue(languageManager.getLanguage(), "upgrade_dialog_field_text"), labelStyle)).colspan(12).padBottom(16);
+        table_upgrade.add(new Label(languageManager.getValue(language, "upgrade_dialog_field_text"), labelStyle)).colspan(12).padBottom(16);
         table_upgrade.row();
         table_upgrade.add(uFork.getImage());
         table_upgrade.add(new Image(images_upgrades, "upgradeIcons_connect")).width(32);
