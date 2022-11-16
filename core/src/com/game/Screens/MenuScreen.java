@@ -95,7 +95,6 @@ public class MenuScreen implements Screen  {
     public void show() {
         Gdx.input.setInputProcessor(stage);
         bExit.setBounds(Gdx.graphics.getWidth()/10,Gdx.graphics.getHeight() - (Gdx.graphics.getHeight()/10*8+Gdx.graphics.getHeight()/100*7+8),Gdx.graphics.getWidth()/10*2, Gdx.graphics.getHeight()/100*7+8);
-        //Ustawienie pozycji przycisków, skalowane z wymiarami okna
         table_bLogin.setBounds(Gdx.graphics.getWidth()/10,Gdx.graphics.getHeight() - (Gdx.graphics.getHeight()/10*2+Gdx.graphics.getHeight()/100*7+8),Gdx.graphics.getWidth()/100*16, Gdx.graphics.getHeight()/100*7+8);
         table_bCredits.setBounds(Gdx.graphics.getWidth()/10,Gdx.graphics.getHeight() - (Gdx.graphics.getHeight()/10*7+Gdx.graphics.getHeight()/100*7+8),Gdx.graphics.getWidth()/10*2, Gdx.graphics.getHeight()/100*7+8);
         table_bExit.setBounds(Gdx.graphics.getWidth()/10,Gdx.graphics.getHeight() - (Gdx.graphics.getHeight()/10*8+Gdx.graphics.getHeight()/100*7+8),Gdx.graphics.getWidth()/10*2, Gdx.graphics.getHeight()/100*7+8);
@@ -195,7 +194,6 @@ public class MenuScreen implements Screen  {
         tDialogLoginErrors.setVisible(false);
         tDialogRegisterErrors.setVisible(false);
 
-        // Login Dialog
         table_dialogLogin.setBounds(0,0,360,420);
         table_dialogLogin.row().colspan(2).width(256).align(Align.center).padBottom(12);
         table_dialogLogin.add(tDialogLoginTextTitle).align(Align.top|Align.center).width(256);
@@ -216,7 +214,6 @@ public class MenuScreen implements Screen  {
         table_dialogLogin.add(bDialogExit).width(128).height(32).align(Align.right);
         table_dialogLogin.add(bDialogLoginRegister).width(128).height(32).align(Align.left);
 
-        // Register Dialog
         table_dialogRegister.setBounds(0,0,360,420);
         table_dialogRegister.row().colspan(2).width(320).align(Align.center).padBottom(12);
         table_dialogRegister.add(tDialogRegisterTextTitle).align(Align.center).expandX();
@@ -274,7 +271,6 @@ public class MenuScreen implements Screen  {
         cDialogStayLogged.addListener(new ClickListener(){
 
             @Override
-            //public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
             public void clicked(InputEvent event, float x, float y){
                 stayLogged = !stayLogged;
                 if (!stayLogged) {
@@ -389,8 +385,6 @@ public class MenuScreen implements Screen  {
                     return;
                 }
                 if (!Objects.equals(fDialogRegisterPassword.getText(), fDialogRegisterRepeatPassword.getText())) {
-                    System.out.println(fDialogRegisterPassword.getText());
-                    System.out.println(fDialogRegisterRepeatPassword.getText());
                     tDialogRegisterErrors.setVisible(true);
                     tDialogRegisterErrors.setText(languageManager.getValue(language, "ErrorRepeatPasswordDifferent"));
                     return;

@@ -76,7 +76,6 @@ public class FileReader {
         String jsonPath = "save/user.json";
         JsonReader json = new JsonReader();
         JsonValue base = json.parse(Gdx.files.internal(jsonPath));
-
         tokenValue = base.getString("token");
     }
 
@@ -90,7 +89,6 @@ public class FileReader {
         json.setIgnoreUnknownFields(true);
         json.setOutputType(JsonWriter.OutputType.json);
         user_info.token = token;
-
         String txt = json.toJson(user_info);
         file.writeString(json.prettyPrint(txt), false);
     }
@@ -99,7 +97,6 @@ public class FileReader {
         String jsonPath = "save/settings.json";
         JsonReader json = new JsonReader();
         JsonValue base = json.parse(Gdx.files.internal(jsonPath));
-
         resolutionValue = base.getString("resolution");
         volumeValue = base.getInt("volume");
         volumeEffectsValue = base.getInt("volumeEffects");
@@ -136,25 +133,21 @@ public class FileReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return j;
     }
 
     public JSONObject downloadFileAsJSONObject(String jsonPath) {
-
         JSONObject j = new JSONObject();
         try {
             return new JSONObject(new String(Files.readAllBytes(Paths.get(jsonPath))));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return j;
     }
 
     public void setSave(JSONObject save) {
         String jsonPath = "save/save0"+ save.getInt("profileNumber") +"l.json";
-
         FileHandle file = Gdx.files.local(jsonPath);
         Json json = new Json();
         json.setTypeName(null);

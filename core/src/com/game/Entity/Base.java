@@ -50,28 +50,28 @@ public class Base {
         state = State.Running;
 
         multipliers = new JSONObject();
-        multipliers.put("damageMultiplier",1f); //done
-        multipliers.put("damageMultipliermeleeTower",1f); //done
-        multipliers.put("damageMultipliermageTower",1f); //done
-        multipliers.put("damageMultipliercrossbowTower",1f); //done
-        multipliers.put("damageMultipliercannonTower",1f);  //done
-        multipliers.put("reloadSpeedMultipliermeleeTower",1f); //done
-        multipliers.put("reloadSpeedMultipliermageTower",1f); //done
-        multipliers.put("reloadSpeedMultipliercrossbowTower",1f); //done
-        multipliers.put("reloadSpeedMultipliercannonTower",1f); //done
-        multipliers.put("rangeMultipliermeleeTower",1f); //done
-        multipliers.put("rangeMultipliermageTower",1f); //done
-        multipliers.put("rangeMultipliercrossbowTower",1f); //done
-        multipliers.put("rangeMultipliercannonTower",1f); //done
-        multipliers.put("splashMultiplier",0f); //done
-        multipliers.put("healthRegeneration",0f); //done
-        multipliers.put("damageReduction",0f); //done
-        multipliers.put("goldMultiplier",1f); //done
-        multipliers.put("diamondsMultiplier",0f); //done
-        multipliers.put("costMultiplier",1f); //done
-        multipliers.put("upgradeCostMultiplier",1f); //done
-        multipliers.put("luckMultiplier",0f); //done
-        multipliers.put("cleaningCostMultiplier",1f); //done
+        multipliers.put("damageMultiplier",1f);
+        multipliers.put("damageMultipliermeleeTower",1f);
+        multipliers.put("damageMultipliermageTower",1f);
+        multipliers.put("damageMultipliercrossbowTower",1f);
+        multipliers.put("damageMultipliercannonTower",1f);
+        multipliers.put("reloadSpeedMultipliermeleeTower",1f);
+        multipliers.put("reloadSpeedMultipliermageTower",1f);
+        multipliers.put("reloadSpeedMultipliercrossbowTower",1f);
+        multipliers.put("reloadSpeedMultipliercannonTower",1f);
+        multipliers.put("rangeMultipliermeleeTower",1f);
+        multipliers.put("rangeMultipliermageTower",1f);
+        multipliers.put("rangeMultipliercrossbowTower",1f);
+        multipliers.put("rangeMultipliercannonTower",1f);
+        multipliers.put("splashMultiplier",0f);
+        multipliers.put("healthRegeneration",0f);
+        multipliers.put("damageReduction",0f);
+        multipliers.put("goldMultiplier",1f);
+        multipliers.put("diamondsMultiplier",0f);
+        multipliers.put("costMultiplier",1f);
+        multipliers.put("upgradeCostMultiplier",1f);
+        multipliers.put("luckMultiplier",0f);
+        multipliers.put("cleaningCostMultiplier",1f);
 
         this.money = actualGame.getInt("gold");
         this.diamonds = actualGame.getInt("diamonds");
@@ -89,8 +89,6 @@ public class Base {
             default -> difficultyMultiplier = 1;
         }
 
-
-
         this.wave = actualGame.getInt("wave");
         this.cleanPrice = 200;
     }
@@ -100,9 +98,7 @@ public class Base {
         this.maxHealth = maxHealth;
         this.health = health;
         this.armor = armor;
-
     }
-
 
     public void setPassiveUpgrade(JSONObject upgrade, boolean isLoaded) {
         if (!isLoaded)
@@ -120,12 +116,10 @@ public class Base {
                         operationsArr[i][j].setTouchable(Touchable.enabled);
                         break;
                     }
-
         }
 
         if (upgrade.has("multipliers"))
         {
-
             JSONObject addMultipliers = upgrade.getJSONObject("multipliers");
             Iterator<?> keys = addMultipliers.keys();
 
@@ -137,13 +131,11 @@ public class Base {
                 {
                     towerManager.refreshReloads(key.replace("reloadSpeedMultiplier",""));
                 }
-
             }
         }
 
         if (upgrade.has("maxHealth") && !isLoaded)
         {
-
             int addingHealth = upgrade.getInt("maxHealth");
             maxHealth += addingHealth;
             health += addingHealth;

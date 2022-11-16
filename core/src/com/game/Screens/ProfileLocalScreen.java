@@ -215,7 +215,6 @@ public class ProfileLocalScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y){
                 if (chosenDifficulty !=null) {
-                    System.out.println("Stworzono gre na profilu " + chosenProfile + "o poziomie trudnosci " + chosenDifficulty);
                     GameState.setGameState(GameState.PLAYING);
                     game.setScreen(new GameScreen(game, profileManager.createEmptySave(chosenDifficulty, chosenProfile, tDialogSeedValue.getText()), true, fileReader, languageManager));
                 }
@@ -269,7 +268,6 @@ public class ProfileLocalScreen implements Screen {
             table_profile_01.addListener(new ClickListener(){
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                    System.out.println("zostałem wybrany");
                     GameState.setGameState(GameState.PLAYING);
                     game.setScreen(new GameScreen(game, save1, true, fileReader, languageManager));
 
@@ -395,7 +393,6 @@ public class ProfileLocalScreen implements Screen {
             }
         });
 
-        //cloud connection
         if(game.getIsLogged()) {
             table_next.setBounds(Gdx.graphics.getWidth()/10*9, Gdx.graphics.getWidth()/10*2,Gdx.graphics.getHeight()/10, Gdx.graphics.getWidth()/10*2);
             table_next.add(bOtherScreen);
@@ -408,8 +405,6 @@ public class ProfileLocalScreen implements Screen {
                 if (!loadResponse.has("loadedData"))
                     loadResponse.put("loadedData",new JSONArray());
 
-                System.out.println(loadResponse.getInt("status"));
-
                 if (loadResponse.getInt("status") == 200 || loadResponse.getInt("status") == 201) {
                     stage.addActor(table_next);
                     if (fileReader.fileExists("save/save01l.json")) {
@@ -421,8 +416,6 @@ public class ProfileLocalScreen implements Screen {
                     if(fileReader.fileExists("save/save03l.json")) {
                         stage.addActor(migrationSave3);
                     }
-                } else {
-                    System.out.println(languageManager.getValue(language, loadResponse.getString("message")));
                 }
             }).start();
 
@@ -462,7 +455,6 @@ public class ProfileLocalScreen implements Screen {
         int numberOfLoadedSaves = loadResponse.getJSONArray("loadedData").length();
 
         if (numberOfLoadedSaves==3) {
-            System.out.println("zajete");
             tMigrateSaveText.setText(languageManager.getValue(language,"noAvailableSlots"));
             table_migrateSave.removeActor(bMigrateSaveDialogOk);
             table_migrateSave.removeActor(bMigrateSaveDialogBack);
@@ -614,7 +606,7 @@ public class ProfileLocalScreen implements Screen {
 
         taEmptyTextfield = new TextureAtlas("assets/buttons/buttons_settings.pack");
         taButtonsProfile = new TextureAtlas("assets/buttons/buttons_profile.pack");
-        taDialog = new TextureAtlas("assets/dialog/skin_dialog.pack");//<- to delete
+        taDialog = new TextureAtlas("assets/dialog/skin_dialog.pack");
 
         connectionManager = new ConnectionManager();
 

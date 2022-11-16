@@ -10,7 +10,6 @@ import org.json.JSONObject;
 import java.util.*;
 
 public class EnemyManager {
-
     private ArrayList<ArrayList<Enemy>> enemyWavesToSpawn;
     private ArrayList<Enemy> enemies;
     private ArrayList<Enemy> renderEnemiesList;
@@ -158,23 +157,23 @@ public class EnemyManager {
                 }
             }
         }
-        //updating summoned enemies
+
         for (Enemy e : enemies) {
             if (Objects.equals(e.getName(), "summoner")) {
                 e.updateSummoned(deltaTime);
             }
         }
-        //updating enemies
+
         Iterator<Enemy> eIterator = enemies.iterator();
         while (eIterator.hasNext()) {
             Enemy e = eIterator.next();
             e.update(deltaTime);
-            //if reached end
+
             if (e.isAtEnd()) {
                 base.damageBase(Math.round(base.getDifficultyMultiplier() * (e.getDmg() - base.getMultipliers().getFloat("damageReduction"))));
                 eIterator.remove();
             }
-            //if dead
+
             if (!e.isAlive()) {
                 if (e.getDiamonds() > 0)
                     base.increaseDiamonds(e.getDiamonds() + (int) (base.getMultipliers().getFloat("diamondsMultiplier")));

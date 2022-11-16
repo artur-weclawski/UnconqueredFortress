@@ -12,14 +12,10 @@ const uploadSaveRoutes = require("./routes/uploadSave")
 const deleteSaveRoutes = require("./routes/deleteSave")
 const pingRoutes = require("./routes/ping")
 
-
 connection()
 app.use(express.json())
 app.use(cors())
 
-
-
-// routes
 app.use("/api/register", registerRoutes)
 app.use("/api/login", loginRoutes)
 app.use("/api/downloadSaves", downloadSavesRoutes)

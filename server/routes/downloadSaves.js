@@ -6,10 +6,7 @@ router.post("/", async (req, res) => {
     try {
 
         const dataFromRequest  = {login: req.headers.login }
-
-
         const save = await Save.exists({ login: dataFromRequest.login});
-        
 
         if (save)
         {

@@ -70,7 +70,6 @@ public class Tower extends Actor {
         this.isMouseEntered = false;
         this.timeToShoot = 0;
         this.reloadTime = turretFirstLevel.getFloat("reload") * base.getMultipliers().getFloat("reloadSpeedMultiplier" + name);
-        ;
         this.worth = turretFirstLevel.getInt("cost");
         this.scale = scale;
         this.towerBullets = new ArrayList<>();
@@ -91,7 +90,6 @@ public class Tower extends Actor {
         this.lvl = turretFirstLevel.getInt("lvl");
         this.enemyToFollow = null;
 
-
         Texture spriteMap = new Texture(Gdx.files.internal(path));
         TextureRegion[][] spritePosition = TextureRegion.split(spriteMap, towerTextureSize, towerTextureSize);
         animationSprites = new TextureRegion[spritePosition[0].length];
@@ -101,7 +99,6 @@ public class Tower extends Actor {
         }
 
         this.towerAnimation = new Animation<>(turretFirstLevel.getFloat("reload") / animationSprites.length, animationSprites);
-
 
         shootDelay = turretFirstLevel.getFloat("reload") / animationSprites.length * framesDelay;
 
@@ -120,7 +117,6 @@ public class Tower extends Actor {
 
         }
 
-
         this.bulletDamage = turretFirstLevel.getFloat("dmg");
 
         this.position = new Vector2(tileX * scale * towerTextureSize + Gdx.graphics.getWidth() / 20, (9 - tileY) * scale * towerTextureSize + (Gdx.graphics.getHeight() - Gdx.graphics.getWidth() / 30 * 16) / 2);
@@ -128,13 +124,11 @@ public class Tower extends Actor {
 
         this.addListener(new ClickListener() {
             private boolean isClicked = false;
-
             public void clicked(InputEvent event, float x, float y) {
                 TowerLevelUp();
                 gameScreen.getBuySound().dispose();
                 gameScreen.getBuySound().play();
                 isClicked = true;
-
             }
 
             public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
@@ -143,7 +137,6 @@ public class Tower extends Actor {
                     getBase().setInfoToDisplay(2, getName(), getTowerLevels().getJSONObject(getLvl() - 1), getTowerLevels().getJSONObject(getLvl()));
                 else
                     getBase().setInfoToDisplay(2, getName(), getTowerLevels().getJSONObject(getLvl() - 1), null);
-
             }
 
             public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor) {
@@ -184,8 +177,8 @@ public class Tower extends Actor {
         this.bulletSplashRange = lvlUp.getInt("splash") * scale;
         this.range = lvlUp.getFloat("range") * scale;
         this.lvl = lvlUp.getInt("lvl");
-
         this.worth = 0;
+
         for (int j = 0; j < lvl; j++)
             this.worth += towerLevels.getJSONObject(j).getInt("cost");
     }
@@ -247,11 +240,9 @@ public class Tower extends Actor {
     }
 
     public void update(float deltaTime, ArrayList<Enemy> enemies) {
-        //set positions, orientation
-        // shoot if reloaded
         stateTime += deltaTime;
-
         Iterator<Bullet> bIterator = towerBullets.iterator();
+
         while (bIterator.hasNext()) {
             Bullet b = bIterator.next();
 
@@ -306,7 +297,6 @@ public class Tower extends Actor {
         if (shootDelayLeft > 0) {
             shootDelayLeft -= deltaTime;
 
-            //moving in direction to enemy
             Vector2 direction = new Vector2(position.x - delayBullet.getEnemyToFollow().getPosition().x, position.y - delayBullet.getEnemyToFollow().getPosition().y);
             double x = Math.abs(position.x - delayBullet.getEnemyToFollow().getPosition().x);
             double distance = Vector2.dst(position.x, position.y, delayBullet.getEnemyToFollow().getPosition().x, delayBullet.getEnemyToFollow().getPosition().y);
@@ -326,8 +316,6 @@ public class Tower extends Actor {
         }
 
         if (timeToShoot <= 0) {
-            //if dst < range for last enemy then shoot last enemy
-            // else find new enemy
             for (Enemy e : enemies) {
                 if (e.getIsFlying() && !canAttackFlying)
                     continue;
@@ -393,7 +381,6 @@ public class Tower extends Actor {
     }
 
     public void render(SpriteBatch batch, ShapeRenderer shapeRenderer) {
-        //draw tower
         if (isMouseEntered) {
             batch.end();
             shapeRenderer.setColor(Color.GREEN);

@@ -9,7 +9,6 @@ public class RoadNeedles extends RoadObstacle {
     public RoadNeedles(JSONObject obstacles, Base base, int tileX, int tileY, float scale, GameScreen gameScreen)
     {
         super(obstacles.getJSONObject("roadNeedles"), base,"assets/game/towers/road_needles.png", tileX, tileY, scale, gameScreen);
-
     }
 
 }

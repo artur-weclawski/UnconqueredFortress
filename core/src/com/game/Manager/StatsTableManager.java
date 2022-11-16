@@ -90,8 +90,6 @@ public class StatsTableManager {
         textFieldStyleManager.setTextFieldStyle(emptyStatsTextFieldStyle, images_stats, font, "emptyStatsCover", Color.WHITE);
 
 
-        //Stats Table
-
         hpTextField = new TextField(languageManager.getValue(language, "hp_field"), textFieldStyleManager.returnTextFieldStyle(leftStatsTextFieldStyle));
         hpTextValue = new TextField(String.valueOf(base.getHealth()), textFieldStyleManager.returnTextFieldStyle(rightStatsTextFieldStyle));
         hpTextField.setAlignment(Align.center);
@@ -151,7 +149,6 @@ public class StatsTableManager {
         statsTable.add(new Image(images_stats, "middleStatsCover"));
         statsTable.add(difficultyTextValue).width((200 * scale) / 2 - 6 * scale).padRight(2 * scale);
 
-        //Operation Table
 
         operationTitleTextField = new TextField(languageManager.getValue(language, "tUpgrade"), textFieldStyleManager.returnTextFieldStyle(leftStatsTextFieldStyle));
         operationTitleTextValue = new TextField(null, textFieldStyleManager.returnTextFieldStyle(rightStatsTextFieldStyle));
@@ -206,7 +203,7 @@ public class StatsTableManager {
         operationTable.add(new Image(images_stats, "middleStatsCover"));
         operationTable.add(operationSplashTextValue).width((200 * scale) / 2 - 6 * scale).padRight(2 * scale);
 
-        // Upgrade Table
+
         upgradeTitleTextField = new TextField(languageManager.getValue(language, "tUpgrade"), textFieldStyleManager.returnTextFieldStyle(leftStatsTextFieldStyle));
         upgradeTitleTextValue = new TextField(null, textFieldStyleManager.returnTextFieldStyle(rightStatsTextFieldStyle));
         upgradePriceTextField = new TextField(languageManager.getValue(language, "tPrice"), textFieldStyleManager.returnTextFieldStyle(leftStatsTextFieldStyle));
@@ -269,7 +266,6 @@ public class StatsTableManager {
         upgradeTable.add(upgradeSplashTextValue).width((200 * scale) / 2 - 6 * scale).padRight(2 * scale);
 
 
-        // Multipliers Table
         multipliersTableTitle = new TextField(null, textFieldStyleManager.returnTextFieldStyle(emptyStatsTextFieldStyle));
         multipliersTableTextField0 = new TextField(null, textFieldStyleManager.returnTextFieldStyle(leftStatsTextFieldStyle));
         multipliersTableTextFieldValue0 = new TextField(null, textFieldStyleManager.returnTextFieldStyle(rightStatsTextFieldStyle));
@@ -367,7 +363,7 @@ public class StatsTableManager {
         multipliersTable.add(multipliersTableTextFieldValue5).width((200 * scale) / 2 - 6 * scale).padRight(2 * scale);
         multipliersTable.row().padBottom(4 * scale);
 
-        // Obstacle Table
+
         obstacleUses = new TextField(languageManager.getValue(language, "tLeft"), textFieldStyleManager.returnTextFieldStyle(leftStatsTextFieldStyle));
         obstacleUsesValue = new TextField(null, textFieldStyleManager.returnTextFieldStyle(rightStatsTextFieldStyle));
 

@@ -72,7 +72,7 @@ public class UpgradeManager {
         textTooltipStyle.label = new Label.LabelStyle(font, Color.WHITE);
 
         textTooltipStyle.background = tooltipBackground;
-        textTooltipStyle.wrapWidth = 400; //nie może być 100.0f
+        textTooltipStyle.wrapWidth = 400;
 
         initUpgrades();
         initListeners();

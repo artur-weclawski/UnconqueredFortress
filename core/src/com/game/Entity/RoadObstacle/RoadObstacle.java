@@ -20,7 +20,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
-
 public class RoadObstacle extends Actor {
 
     private String name;
@@ -67,9 +66,7 @@ public class RoadObstacle extends Actor {
         this.position = new Vector2(tileX * scale * 64 + Gdx.graphics.getWidth() / 20, (9 - tileY) * scale * 64 + (Gdx.graphics.getHeight() - Gdx.graphics.getWidth() / 30 * 16) / 2);
 
         this.addListener(new ClickListener() {
-
             private boolean isClicked = false;
-
             public void clicked(InputEvent event, float x, float y) {
                 isClicked = true;
 
@@ -81,8 +78,6 @@ public class RoadObstacle extends Actor {
 
                 if (getUsesLeft() > 0)
                     getBase().setInfoToDisplay(5, getName());
-
-
             }
 
             public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor) {
@@ -91,15 +86,11 @@ public class RoadObstacle extends Actor {
                     getBase().setInfoToDisplay(0);
                 }
                 isClicked = false;
-
             }
-
         });
 
         this.setBounds(position.x, position.y, textureSize, textureSize);
         this.disableListeners();
-
-
     }
 
     public void clearImage() {
@@ -159,7 +150,7 @@ public class RoadObstacle extends Actor {
         return Math.round(buyPrice / 20f * usesLeft);
     }
 
-    public void update(float deltaTime, ArrayList<Enemy> enemies) {
+    public void update(ArrayList<Enemy> enemies) {
 
         for (Enemy e : enemies) {
             if (textureSize / 2 * scale >= Vector2.dst(position.x + textureSize * scale / 2, position.y + textureSize * scale / 2, e.getPosition().x + e.getEnemySize() * scale / 2, e.getPosition().y + e.getEnemySize() * scale / 2)) {
@@ -181,11 +172,8 @@ public class RoadObstacle extends Actor {
                         getBase().setUsesLeft(usesLeft);
                     }
 
-
                     break;
-
                 }
-
             }
 
             if (Objects.equals(e.getName(), "summoner")) {
@@ -209,17 +197,11 @@ public class RoadObstacle extends Actor {
                                 getBase().setUsesLeft(usesLeft);
                             }
 
-
                             break;
-
                         }
-
                     }
-
                 }
             }
-
-
         }
 
         Iterator<Enemy> eIterator = slowedEnemies.iterator();

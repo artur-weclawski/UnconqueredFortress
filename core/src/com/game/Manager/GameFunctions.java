@@ -100,7 +100,6 @@ public class GameFunctions {
                 arr[i][j].setTouchable(Touchable.disabled);
             }
         }
-
         return arr;
     }
 
@@ -134,7 +133,6 @@ public class GameFunctions {
             v.add(new Vector2(point[1] * scale * 64 + Gdx.graphics.getWidth() / 20, (9 - point[0]) * scale * 64 + (Gdx.graphics.getHeight() - Gdx.graphics.getWidth() / 30 * 16) / 2));
         }
         Collections.reverse(v);
-
         return v;
     }
 

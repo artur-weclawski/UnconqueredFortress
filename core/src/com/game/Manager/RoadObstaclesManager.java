@@ -43,11 +43,11 @@ public class RoadObstaclesManager {
         roadObstacles.add(r);
     }
 
-    public void update(float deltaTime) {
+    public void update() {
         Iterator<RoadObstacle> rIterator = roadObstacles.iterator();
         while (rIterator.hasNext()) {
             RoadObstacle r = rIterator.next();
-            r.update(deltaTime, enemies);
+            r.update(enemies);
             if (r.getUsesLeft() <= 0) {
                 if (r.getIsOnMap()) {
                     r.setIsOnMap(false);

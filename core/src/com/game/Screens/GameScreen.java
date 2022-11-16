@@ -99,7 +99,6 @@ public class GameScreen implements Screen {
         operationsArr = GameFunctions.getOperationsArr(this);
         base = new Base(actualGame, operationsArr);
         tipsManager = new TipsManager(languageManager, font, base, scale);
-        //reading stats etc
         if (actualGame.getString("difficulty").equals("normal")) {
             mapArr = worldManager.createWorld(this, actualGame.getInt("seed"), 46);
         } else if (actualGame.getString("difficulty").equals("hard")) {
@@ -410,22 +409,12 @@ public class GameScreen implements Screen {
 
         if (Objects.equals(lastClickedMapTile.getName(), "path") && buildArr[lastClickedMapTile.getX()][lastClickedMapTile.getY()] == 0 && (Objects.equals(chosenOperation, "roadNeedles") || Objects.equals(chosenOperation, "stickyRoad")))
             shouldRenderPreview = true;
-
-        if (Objects.equals(chosenOperation, "sell")) {
-            if (buildArr[lastClickedMapTile.getX()][lastClickedMapTile.getY()] == 1) {
-                System.out.println(towerManager.getSellWorth(lastClickedMapTile.getX(), lastClickedMapTile.getY()));
-            }
-            if (buildArr[lastClickedMapTile.getX()][lastClickedMapTile.getY()] == 2) {
-                System.out.println(roadObstaclesManager.getSellWorth(lastClickedMapTile.getX(), lastClickedMapTile.getY()));
-            }
-        }
     }
 
     public void showInfoDialog() {
         Texture infoDialogBackground = new Texture(new FileHandle("assets/dialog/settings_dialog.png"));
         infoDialog = new Dialog("", new Window.WindowStyle(font, Color.WHITE, new TextureRegionDrawable(new TextureRegion(infoDialogBackground)))) {
             public void result(Object obj) {
-                System.out.println("result " + obj);
             }
         };
         Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
@@ -439,7 +428,6 @@ public class GameScreen implements Screen {
         Texture eventDialogBackground = new Texture(new FileHandle("assets/dialog/settings_dialog.png"));
         eventDialog = new Dialog("", new Window.WindowStyle(font, Color.WHITE, new TextureRegionDrawable(new TextureRegion(eventDialogBackground)))) {
             public void result(Object obj) {
-                System.out.println("result " + obj);
             }
         };
         Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
@@ -529,18 +517,6 @@ public class GameScreen implements Screen {
                 upgradeDialog.setX(0);
             }
 
-
-            //////////////////////////// imo nie potrzebne ///////////////////////////
-
-           /* public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-                //base.setInfoToDisplay(4);
-            }
-
-            public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-                //base.setInfoToDisplay(0);
-            }*/
-
-
         });
 
         bNextWave.addListener(new ClickListener() {
@@ -556,8 +532,6 @@ public class GameScreen implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 if (enemyManager.getEnemiesLeft() == 0)
                     saveGame();
-                else
-                    System.out.println("nie mozna zapisac");
             }
 
 
@@ -569,9 +543,7 @@ public class GameScreen implements Screen {
                 if (enemyManager.getEnemiesLeft() == 0) {
                     saveGame();
                     game.setScreen(new MenuScreen(game,fileReader, languageManager));
-                } else
-                    System.out.println("nie mozna zapisac");
-            }
+                }}
 
 
         });
@@ -631,7 +603,6 @@ public class GameScreen implements Screen {
         });
 
         table_dialogPause.setBounds(0, 0, 256, 460);
-        System.out.println("table_Dialog" + table_dialogPause.getWidth() + ":" + table_dialogPause.getHeight());
         table_dialogPause.add(bResume).width(table_dialogPause.getWidth() / 20 * 16).padRight(table_dialogPause.getWidth() / 10);
         table_dialogPause.row();
         table_dialogPause.add(bSaveDialog).width(table_dialogPause.getWidth() / 20 * 16).padRight(table_dialogPause.getWidth() / 10);
@@ -682,8 +653,6 @@ public class GameScreen implements Screen {
                 if (keycode == Input.Keys.F5) {
                     if (enemyManager.getEnemiesLeft() == 0)
                         saveGame();
-                    else
-                        System.out.println("nie mozna zapisac");
                     return true;
                 }
                 return super.keyDown(event, keycode);
@@ -754,7 +723,6 @@ public class GameScreen implements Screen {
             fileReader.setSave(actualGame);
         } else {
             JSONObject saveResponse = connectionManager.requestSend(actualGame, "api/uploadSave");
-            System.out.println(saveResponse);
         }
     }
 
@@ -802,7 +770,7 @@ public class GameScreen implements Screen {
 
         switch (base.getState()) {
             case Running -> {
-                roadObstaclesManager.update(delta);
+                roadObstaclesManager.update();
 
                 statsTableManager.update();
                 towerManager.update(delta);

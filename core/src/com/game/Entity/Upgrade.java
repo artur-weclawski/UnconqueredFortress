@@ -20,14 +20,12 @@ public class Upgrade {
     private Image image;
     private JSONArray upgradeArray;
     private String unlockedIcon;
-
     private ArrayList<Upgrade> nextUpgrades;
     private List<Integer> levelToUnlockUpgrades;
     private LanguageManager languageManager;
     private String language;
 
     public Upgrade(String upgradeName, int level, JSONArray upgradeArray, Skin skin, String unlockedIcon, LanguageManager languageManager) {
-
         this.upgradeName = upgradeName;
         this.level = level;
         this.maxLevel = upgradeArray.length();
@@ -37,7 +35,6 @@ public class Upgrade {
         this.languageManager = languageManager;
         this.language = languageManager.getLanguage();
         this.isMaxLevel = true;
-
         this.nextUpgrades = new ArrayList<>();
         this.levelToUnlockUpgrades = new ArrayList<>();
 
@@ -45,10 +42,8 @@ public class Upgrade {
             this.isMaxLevel = false;
             this.image.setDrawable(skin, unlockedIcon);
         }
-
         image.setTouchable(Touchable.enabled);
     }
-
 
     public int getLevel() {
         return level;
@@ -59,7 +54,6 @@ public class Upgrade {
         level = 0;
         image.setDrawable(images_upgrades, unlockedIcon);
     }
-
 
     public void levelUp() {
         if(!isMaxLevel) {
@@ -77,25 +71,17 @@ public class Upgrade {
     }
 
     public Label returnInformation(Label.LabelStyle labelStyle, int diamonds){
-
         if(this.level<0) {
             return new Label(languageManager.getValue(language, "upgrade_First_Unlock"), labelStyle);
         }else if (level==maxLevel) {
             return new Label(languageManager.getValue(language, "upgrade_Max_level"), labelStyle);
-        }
-        else {
-
+        } else {
             String information3 = "";
-
             information3 += languageManager.getValue(language, upgradeName+"Description");
-
             String information = languageManager.getValue(language, "upgrade_Upgrade") + languageManager.getValue(language, this.upgradeName) + "\n"+ information3 + "\n" + languageManager.getValue(language, "upgrade_Level") + this.level + "/" + this.maxLevel + "\n";
-
             String information2 = "";
-
-
             JSONObject upgradesJSONObject = upgradeArray.getJSONObject(level);
-            // if unlocks tower or adds health
+
             if (upgradesJSONObject.has("unlocks"))
                 information2 += languageManager.getValue(language, "uInfoUnlocks")+ upgradeArray.getJSONObject(level).getString("unlocks")+"\n";
 
@@ -103,7 +89,6 @@ public class Upgrade {
                 information2 += languageManager.getValue(language, "uInfoMaxHealth") + upgradeArray.getJSONObject(level).getInt("maxHealth")+"\n";
 
             if (upgradesJSONObject.has("multipliers")) {
-
                 JSONObject upgradesNameMultipliers = upgradesJSONObject.getJSONObject("multipliers");
 
                 if (upgradesNameMultipliers.has("healthRegeneration"))
@@ -145,7 +130,6 @@ public class Upgrade {
                 if (upgradesNameMultipliers.has("damageMultipliercannonTower"))
                     information2 += languageManager.getValue(language, "uInfoCannonDamageMultiplier") + (int) (100 * upgradesNameMultipliers.getFloat("damageMultipliercannonTower")) + "%" + "\n";
 
-                //range
                 if (upgradesNameMultipliers.has("rangeMultipliercannonTower"))
                     information2 += languageManager.getValue(language, "uInfoRangeCannon") + (int) (100 * upgradesNameMultipliers.getFloat("rangeMultipliercannonTower")) + "%" + "\n";
 
@@ -155,8 +139,6 @@ public class Upgrade {
                 if (upgradesNameMultipliers.has("rangeMultipliermageTower"))
                     information2 += languageManager.getValue(language, "uInfoRangeMage") + (int) (100 * upgradesNameMultipliers.getFloat("rangeMultipliermageTower")) + "%" + "\n";
 
-
-                //reload
                 if (upgradesNameMultipliers.has("reloadSpeedMultipliermeleeTower"))
                     information2 += languageManager.getValue(language, "uInfoMeleeReloadSpeedMultiplier") + + (int) (-100 * upgradesNameMultipliers.getFloat("reloadSpeedMultipliermeleeTower")) + "%" + "\n";
 
@@ -169,15 +151,12 @@ public class Upgrade {
                 if (upgradesNameMultipliers.has("reloadSpeedMultipliercannonTower"))
                     information2 += languageManager.getValue(language, "uInfoCannonReloadSpeedMultiplier") + + (int) (-100 * upgradesNameMultipliers.getFloat("reloadSpeedMultipliercannonTower")) + "%" + "\n";
 
-                //splash
                 if (upgradesNameMultipliers.has("splashMultiplier"))
                     information2 += languageManager.getValue(language, "uInfoSplashMultiplier") + (int) (100 * upgradesNameMultipliers.getFloat("splashMultiplier")) + "%" + "\n";
-
             }
 
             if(information2.length()>0)
             {
-
                 if (diamonds<getCostToUpgrade())
                     information2 += languageManager.getValue(language, "tPrice") +": "+ "[RED]"+getCostToUpgrade() +" "+ languageManager.getValue(language, "diamondsPrice")+"\n";
                 else
@@ -186,12 +165,8 @@ public class Upgrade {
                 return new Label(information+information2,labelStyle);
             }
 
-
-            //else if not implemented
             return new Label( languageManager.getValue(language, "uInfoNotImplemented"),labelStyle);
-
         }
-
     }
 
     public int getMaxLevel() {
@@ -213,7 +188,6 @@ public class Upgrade {
     public void addNextUpgrade(Upgrade nextUpgrade, int levelToUnlock) {
         nextUpgrades.add(nextUpgrade);
         levelToUnlockUpgrades.add(levelToUnlock);
-
     }
 
     public Image getImage() {
@@ -231,11 +205,9 @@ public class Upgrade {
     public void removeUnlocked() {
         nextUpgrades.remove(0);
         levelToUnlockUpgrades.remove(0);
-
     }
 
     public int getUnlocksLeft() {
         return nextUpgrades.size();
     }
-
 }

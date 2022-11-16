@@ -199,7 +199,6 @@ public class SettingsScreen implements Screen {
                     Texture bg = new Texture(new FileHandle("assets/dialog/settings_dialog.png"));
                     backDialog = new Dialog("", new Window.WindowStyle(font, Color.WHITE, new TextureRegionDrawable(new TextureRegion(bg)))) {
                         public void result(Object obj) {
-                            System.out.println("result " + obj);
                         }
                     };
 
@@ -208,7 +207,6 @@ public class SettingsScreen implements Screen {
                     backDialog.button(bBackDialog).padBottom(16);
                     backDialog.button(bSave).padBottom(16);
                     backDialog.show(stage);
-                    System.out.println("Dialog width: " + backDialog.getWidth() + " height: " + backDialog.getHeight());
                     table_default.remove();
                 }
             }
@@ -226,7 +224,6 @@ public class SettingsScreen implements Screen {
                         Texture bg = new Texture(new FileHandle("assets/dialog/settings_dialog.png"));
                         backDialog = new Dialog("", new Window.WindowStyle(font, Color.WHITE, new TextureRegionDrawable(new TextureRegion(bg)))) {
                             public void result(Object obj) {
-                                System.out.println("result " + obj);
                             }
                         };
 
@@ -235,7 +232,6 @@ public class SettingsScreen implements Screen {
                         backDialog.button(bBackDialog).padBottom(16);
                         backDialog.button(bSave).padBottom(16);
                         backDialog.show(stage);
-                        System.out.println("Dialog width: " + backDialog.getWidth() + " height: " + backDialog.getHeight());
                         table_default.remove();
                     }
                     return true;
@@ -301,12 +297,11 @@ public class SettingsScreen implements Screen {
             tLanguageField = new TextField(languagesList.get(0), textFieldStyleManager.returnTextFieldStyle(textFieldStyle));
         }
 
-        //to po lewo
         tResolutionFieldText.setAlignment(Align.center);
         tVolumeFieldText.setAlignment(Align.center);
         tVolumeEffectsFieldText.setAlignment(Align.center);
         tLanguageFieldText.setAlignment(Align.center);
-        //to po prawo
+
         tResolutionField.setAlignment(Align.center);
         table_resolution.add(tResolutionFieldText).padRight(100).width(320);
         table_resolution.add(bLeftResolution).width(32).height(32);

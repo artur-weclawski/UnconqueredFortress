@@ -128,7 +128,6 @@ public class ProfileCloudScreen implements Screen {
                     table_profile_01.addListener(new ClickListener(){
                         @Override
                         public void clicked(InputEvent event, float x, float y) {
-                            System.out.println("zostałem wybrany");
                             GameState.setGameState(GameState.PLAYING);
                             game.setScreen(new GameScreen(game, save1, false, fileReader, languageManager));
                         }
@@ -217,7 +216,6 @@ public class ProfileCloudScreen implements Screen {
             }
         }
 
-        //no saves -> make +
         if (table_profile_01.getChildren().size==0) {
             table_profile_01 = profileManager.createEmptyProfileTable(font, Gdx.graphics.getWidth()/10*2);
             table_profile_01.addListener(new ClickListener(){
@@ -261,7 +259,6 @@ public class ProfileCloudScreen implements Screen {
             }
         });
 
-        //to calibrate
         table_previous.setBounds((Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/10*9 - Gdx.graphics.getHeight()/10), Gdx.graphics.getWidth()/10*2,Gdx.graphics.getHeight()/10, Gdx.graphics.getWidth()/10*2);
         table_previous.add(bOtherScreen);
 
@@ -395,7 +392,6 @@ public class ProfileCloudScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y){
                 if (chosenDifficulty !=null) {
-                    System.out.println("Stworzono gre na profilu " + chosenProfile + "o poziomie trudnosci " + chosenDifficulty);
                     GameState.setGameState(GameState.PLAYING);
                     game.setScreen(new GameScreen(game,profileManager.createEmptySave(chosenDifficulty, chosenProfile, tDialogSeedValue.getText()), false, fileReader, languageManager));
                 }
@@ -445,7 +441,6 @@ public class ProfileCloudScreen implements Screen {
             table_migrateSave.removeActor(bMigrateSaveDialogBack);
             table_migrateSave.row().padBottom(8);
             table_migrateSave.add(bMigrateSaveDialogBack).colspan(2);
-            System.out.println("zajete");
             tMigrateSaveText.setText(languageManager.getValue(language,"noAvailableSlots"));
             table_migrateSave.removeActor(bMigrateSaveDialogOk);
             bMigrateSaveDialogBack.addListener(new ClickListener() {
