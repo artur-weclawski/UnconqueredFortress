@@ -99,7 +99,7 @@ public class ProfileCloudScreen implements Screen {
         textFieldStyleManager.setTextFieldStyle(textFieldStyle, images_empty, font, "empty_background", Color.WHITE);
         textFieldStyleManager.setTextFieldStyleCursor(seedFieldStyle, images_settings, font, "textBar", Color.WHITE);
 
-        background = new Texture("background.png");
+        background = new Texture("assets/backgrounds/tempBackground.png");
     }
     @Override
     public void show() {
@@ -584,7 +584,7 @@ public class ProfileCloudScreen implements Screen {
         taEmptyTextfield = new TextureAtlas("assets/buttons/buttons_settings.pack");
         taButtonsProfile = new TextureAtlas("assets/buttons/buttons_profile.pack");
 
-        connectionManager = new ConnectionManager();
+        connectionManager = new ConnectionManager(game);
 
         images_default = new Skin(taButtonsDefault);
         images_empty = new Skin(taEmptyTextfield);

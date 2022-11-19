@@ -17,7 +17,6 @@ buildscript {
 allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
-
     version = '1.0'
     ext {
         appName = "TowerDefense"
@@ -74,7 +73,7 @@ project(":tests") {
     dependencies {
 
         implementation project(":core")
-
+        implementation 'org.apache.commons:commons-lang3:3.3.1'
         implementation 'org.json:json:20171018'
         implementation 'javax.json:javax.json-api:1.0-b01'
         implementation 'com.googlecode.json-simple:json-simple:1.1.1'
@@ -83,6 +82,7 @@ project(":tests") {
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         api "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
         api "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         implementation "junit:junit:4.13.2"
         implementation "org.mockito:mockito-all:1.9.+"
     }

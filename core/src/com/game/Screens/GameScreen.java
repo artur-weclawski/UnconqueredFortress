@@ -889,7 +889,7 @@ public class GameScreen implements Screen {
         font = new BitmapFont();
         font = generator.generateFont(parameter);
 
-        connectionManager = new ConnectionManager();
+        connectionManager = new ConnectionManager(game);
 
         taButtonsSettings = new TextureAtlas("assets/buttons/buttons_settings.pack");
         taButtonsDefault = new TextureAtlas("assets/buttons/buttons_default.pack");

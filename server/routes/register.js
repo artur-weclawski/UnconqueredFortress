@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
         const user2 = await User.findOne({ email: dataFromRequest.email })
         
         if (user2)
-            return res.send({status: 410, message: "ResponseMailTaken" })
+            return res.send({status: 409, message: "ResponseMailTaken" })
 
         const salt = await bcrypt.genSalt(Number(process.env.SALT))
         const hashPassword = await bcrypt.hash(dataFromRequest.password, salt)

@@ -15,20 +15,13 @@
  ******************************************************************************/
 
 package game;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import com.game.Main;
-import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
-import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
 import com.badlogic.gdx.ApplicationListener;
@@ -37,15 +30,14 @@ import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 
 public class HeadlessLauncher extends BlockJUnit4ClassRunner implements ApplicationListener {
 
-	private Map<FrameworkMethod, RunNotifier> invokeInRender = new HashMap<FrameworkMethod, RunNotifier>();
-
 	public HeadlessLauncher(Class<?> c) throws InitializationError {
 		super(c);
 		HeadlessApplicationConfiguration conf = new HeadlessApplicationConfiguration();
-
-		new HeadlessApplication(this, conf);
 		Gdx.gl = mock(GL20.class);
+		new HeadlessApplication(new Main(), conf);
+
 	}
+
 
 	@Override
 	public void create() {

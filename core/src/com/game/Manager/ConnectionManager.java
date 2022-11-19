@@ -1,5 +1,6 @@
 package com.game.Manager;
 
+import com.game.Main;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -11,12 +12,16 @@ import java.nio.charset.StandardCharsets;
 
 public class ConnectionManager {
     private static final String urlHeader = "https://projektgame.azurewebsites.net/";
-    public ConnectionManager() {
+    private static final String urlHeaderTest = "http://localhost:9000/";
+
+    private Main game;
+    public ConnectionManager(Main game) {
+        this.game = game;
     }
 
     public JSONObject requestSend(JSONObject dataToSend, String Url) {
         try {
-            URL url = new URL(urlHeader + Url);
+            URL url = new URL(urlHeaderTest + Url);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
 
@@ -28,6 +33,8 @@ public class ConnectionManager {
                 Object keyValue = dataToSend.get(keyStr);
                 con.setRequestProperty(keyStr, keyValue.toString());
             }
+
+            con.setRequestProperty("token", game.getToken());
 
             StringBuilder response = new StringBuilder();
             try {

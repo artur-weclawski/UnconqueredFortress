@@ -545,19 +545,19 @@ public class StatsTableManager {
                 multipliersTableTitle.setText(languageManager.getValue(language, "tEconomy"));
 
                 multipliersTableTextField0.setText(languageManager.getValue(language, "gold"));
-                multipliersTableTextFieldValue0.setText(String.format("%.2f", multipliers.getFloat("goldMultiplier")));
+                multipliersTableTextFieldValue0.setText((int)multipliers.getFloat("goldMultiplier")*100 + "%");
 
                 multipliersTableTextField1.setText(languageManager.getValue(language, "diamonds"));
-                multipliersTableTextFieldValue1.setText(String.format("%.2f", multipliers.getFloat("diamondsMultiplier")));
+                multipliersTableTextFieldValue1.setText((int)multipliers.getFloat("diamondsMultiplier")*100+100 + "%");
 
                 multipliersTableTextField2.setText(languageManager.getValue(language, "tPurchase"));
-                multipliersTableTextFieldValue2.setText(multipliers.getFloat("costMultiplier") + "%");
+                multipliersTableTextFieldValue2.setText((int)multipliers.getFloat("costMultiplier")*100 + "%");
 
                 multipliersTableTextField3.setText(languageManager.getValue(language, "upgrade"));
-                multipliersTableTextFieldValue3.setText(multipliers.getFloat("upgradeCostMultiplier") + "%");
+                multipliersTableTextFieldValue3.setText((int)multipliers.getFloat("upgradeCostMultiplier")*100 + "%");
 
                 multipliersTableTextField4.setText(languageManager.getValue(language, "tClean"));
-                multipliersTableTextFieldValue4.setText(multipliers.getFloat("cleaningCostMultiplier") + "%");
+                multipliersTableTextFieldValue4.setText((int)multipliers.getFloat("cleaningCostMultiplier")*100 + "%");
 
                 multipliersTableTextField4.setVisible(true);
                 middleStatsCoverArr[4].setVisible(true);

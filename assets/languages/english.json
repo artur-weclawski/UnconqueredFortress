@@ -22,6 +22,7 @@
   "ResponseNoUserWithThisLogin": "No user with this login",
   "ResponseLoggedSuccessfully": "Logged successfully",
   "ResponseInternalServerError": "Internal server error",
+  "ResponseUnauthorized" : "Not authorized",
   "ErrorEmptyFields": "Fill all fields",
   "ErrorLengthOfLogin":"Login should have between 5 and 20 characters",
   "ErrorLengthOfPassword": "Password should have between 5 and 20 characters",

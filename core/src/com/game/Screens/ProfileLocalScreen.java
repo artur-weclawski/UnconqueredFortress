@@ -41,7 +41,7 @@ public class ProfileLocalScreen implements Screen {
     private BitmapFont font, font_profile;
     private TextureAtlas taButtonsDefault, taEmptyTextfield, taButtonsProfile, taDialog;
     private Skin images_default, images_empty, image_profiles, images_settings;
-    private TextButton bMigrateSaveDialogOk, bMigrateSaveDialogBack, bDeleteDialogDelete, bDeleteDialogCancel, bBack, bPlay, bOtherScreen, bNewProfile01, bNewProfile02, bNewProfile03, bDialogCancel, bDialogCreate, cDialogEasyDifficulty, cDialogNormalDifficulty, cDialogHardDifficulty;
+    public TextButton bMigrateSaveDialogOk, bMigrateSaveDialogBack, bDeleteDialogDelete, bDeleteDialogCancel, bBack, bPlay, bOtherScreen, bNewProfile01, bNewProfile02, bNewProfile03, bDialogCancel, bDialogCreate, cDialogEasyDifficulty, cDialogNormalDifficulty, cDialogHardDifficulty;
     private Table table_profile_01, table_profile_02, table_profile_03, table_default, table_next, table_Dialog, table_deleteDialog;
     private Table delete1, delete2, delete3;
     private Table table_migrateSave, migrationSave1, migrationSave2, migrationSave3;
@@ -97,6 +97,7 @@ public class ProfileLocalScreen implements Screen {
 
         buttonStyleManager.setTextButtonStyle(textButtonStyle_bNext, image_profiles, font, "next_screen_button", "next_screen_button");
         bOtherScreen = new TextButton("", buttonStyleManager.returnTextButtonStyle(textButtonStyle_bNext));
+        bOtherScreen.setVisible(false);
 
         buttonStyleManager.setTextButtonStyle(textButtonStyle_bNewProfile, image_profiles, font, "new_profile_button_up", "new_profile_button_down");
         bNewProfile01 = new TextButton("", buttonStyleManager.returnTextButtonStyle(textButtonStyle_bNewProfile));
@@ -395,6 +396,7 @@ public class ProfileLocalScreen implements Screen {
 
         if(game.getIsLogged()) {
             table_next.setBounds(Gdx.graphics.getWidth()/10*9, Gdx.graphics.getWidth()/10*2,Gdx.graphics.getHeight()/10, Gdx.graphics.getWidth()/10*2);
+            bOtherScreen.setVisible(true);
             table_next.add(bOtherScreen);
 
             JSONObject loadSaves = new JSONObject().put("login", game.getLogin());
@@ -608,7 +610,7 @@ public class ProfileLocalScreen implements Screen {
         taButtonsProfile = new TextureAtlas("assets/buttons/buttons_profile.pack");
         taDialog = new TextureAtlas("assets/dialog/skin_dialog.pack");
 
-        connectionManager = new ConnectionManager();
+        connectionManager = new ConnectionManager(game);
 
         images_default = new Skin(taButtonsDefault);
         images_empty = new Skin(taEmptyTextfield);

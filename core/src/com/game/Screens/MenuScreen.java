@@ -242,7 +242,7 @@ public class MenuScreen implements Screen  {
             public void clicked(InputEvent event, float x, float y){
 
                 if (game.getIsLogged()) {
-                    if (fileReader.getTokenValue()!=null){
+                    if (game.getToken()!=null){
                         fDialogLoginLogin.setText(fileReader.getLoginFromToken());
                     }
 
@@ -313,10 +313,11 @@ public class MenuScreen implements Screen  {
                     if (response.getInt("status") == 200) {
                         if (stayLogged) {
                             fileReader.setUserInfo(response.getString("token"));
+
                         } else {
                             fDialogLoginPassword.setText(null);
                         }
-
+                        game.setToken(response.getString("token"));
                         tDialogLoginErrors.setText(null);
                         tDialogLoginErrors.setVisible(false);
                         bLogin.setText(languageManager.getValue(language, "bLogout"));
@@ -564,7 +565,7 @@ public class MenuScreen implements Screen  {
 
         fontText_error = generator.generateFont(parameter);
 
-        connectionManager = new ConnectionManager();
+        connectionManager = new ConnectionManager(game);
 
         taButtonsAtlas = new TextureAtlas("assets/buttons/buttons_menu.pack");
         taButtonsDefault = new TextureAtlas("assets/buttons/buttons_default.pack");

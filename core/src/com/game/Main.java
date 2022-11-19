@@ -15,6 +15,7 @@ public class Main extends Game {
 	private Music music, cleanSound, sellSound, buySound;
 	private boolean isLogged;
 	private String login;
+	private String token;
 	private ConnectionManager connectionManager;
 	private LanguageManager languageManager;
 
@@ -39,9 +40,6 @@ public class Main extends Game {
 	@Override
 	public void create () {
 
-		connectionManager = new ConnectionManager();
-		new Thread(() -> connectionManager.requestSend(new JSONObject(), "api/ping")).start();
-
 		batch = new SpriteBatch();
 		FileReader fileReader = new FileReader();
 		fileReader.downloadSettings();
@@ -63,6 +61,15 @@ public class Main extends Game {
 				case "1600 X 900 Windowed" -> Gdx.graphics.setWindowedMode(1600, 900);
 			}
 		}
+
+		fileReader.downloadUserInfo();
+		if (fileReader.getTokenValue()!=null){
+			this.token = fileReader.getTokenValue();
+		}
+
+		connectionManager = new ConnectionManager(this);
+		new Thread(() -> connectionManager.requestSend(new JSONObject(), "api/ping")).start();
+
 		music = Gdx.audio.newMusic(Gdx.files.internal("assets/sound/backgroundMusic.ogg"));
 		cleanSound = Gdx.audio.newMusic(Gdx.files.internal("assets/sound/cleanSound.ogg"));
 		sellSound = Gdx.audio.newMusic(Gdx.files.internal("assets/sound/sellSound.ogg"));
@@ -92,4 +99,13 @@ public class Main extends Game {
 	public Music getBuySound() {
 		return buySound;
 	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
 }
