@@ -52,7 +52,6 @@ public class TipsManager {
     public void createTipsDialog(){
 
         pixmap = new Pixmap(new FileHandle("assets/backgrounds/tempBackground.png"));
-        System.out.println("pm: " + pixmap.getWidth() + " : " + pixmap.getHeight());
         scaledPixmap = new Pixmap((int) (1920*scale/1.5f), (int) (1080*scale/1.5f), pixmap.getFormat());
         scaledPixmap.drawPixmap(
                 pixmap,

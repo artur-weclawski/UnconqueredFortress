@@ -97,11 +97,8 @@ public class ProfileManager {
     }
 
     public JSONObject createEmptySave(String difficulty, int chosenProfile, String seedInput) {
-        //wygenerowanie seeda
-        System.out.println("Seed: " + seedInput);
         JSONObject j = new JSONObject();
         int seed = (int) stringToSeed(seedInput);
-        System.out.println("Seed: " + seed);
         j.put("seed", seed);//
         j.put("profileNumber", chosenProfile);
         j.put("difficulty", difficulty);

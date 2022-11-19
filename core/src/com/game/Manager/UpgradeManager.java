@@ -339,7 +339,6 @@ public class UpgradeManager {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     isClicked = true;
-                    System.out.println("kliklem na:" + u.getUpgradeName());
                     if (!u.isMaxLevel()) {
                         if (base.getDiamonds() >= u.getCostToUpgrade()) {
                             base.setPassiveUpgrade(u.getUpgrade(), false);

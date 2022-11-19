@@ -211,7 +211,6 @@ public class SettingsScreen implements Screen {
                 }
             }
         });
-
         stage.addListener(new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
