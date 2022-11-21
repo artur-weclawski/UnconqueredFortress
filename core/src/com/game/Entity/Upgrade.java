@@ -52,7 +52,8 @@ public class Upgrade {
     public void unlock(Skin images_upgrades) {
         isMaxLevel=false;
         level = 0;
-        image.setDrawable(images_upgrades, unlockedIcon);
+        if (images_upgrades!=null)
+            image.setDrawable(images_upgrades, unlockedIcon);
     }
 
     public void levelUp() {

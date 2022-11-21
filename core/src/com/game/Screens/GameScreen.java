@@ -530,8 +530,7 @@ public class GameScreen implements Screen {
         bSaveDialog.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                if (enemyManager.getEnemiesLeft() == 0)
-                    saveGame();
+                tryToSave();
             }
 
 
@@ -540,13 +539,12 @@ public class GameScreen implements Screen {
         bSaveAndExitDialog.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                if (enemyManager.getEnemiesLeft() == 0) {
-                    saveGame();
+                if (tryToSave())
                     game.setScreen(new MenuScreen(game,fileReader, languageManager));
-                }}
-
-
+                }
         });
+
+
 
         bExitDialog.addListener(new ClickListener() {
             @Override
@@ -651,8 +649,7 @@ public class GameScreen implements Screen {
                     return true;
                 }
                 if (keycode == Input.Keys.F5) {
-                    if (enemyManager.getEnemiesLeft() == 0)
-                        saveGame();
+                    tryToSave();
                     return true;
                 }
                 return super.keyDown(event, keycode);
@@ -709,6 +706,14 @@ public class GameScreen implements Screen {
         loadObstacles();
         towerManager.enableListeners();
         roadObstaclesManager.enableListeners();
+    }
+
+    private boolean tryToSave() {
+        if (enemyManager.getEnemiesLeft() == 0) {
+            saveGame();
+            return true;
+        }
+        return false;
     }
 
     public void saveGame() {
