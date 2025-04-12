@@ -1,0 +1,8 @@
+{
+  "meleeTower": [{"lvl":  1, "range":  100, "dmg":  50, "reload":  2.5, "bulletSpeed": 300, "cost":  100, "splash":  0}, {"lvl":  2, "range":  100, "dmg":  60, "reload":  3, "bulletSpeed": 300, "cost":  50, "splash":  0},{"lvl":  3, "range":  100, "dmg":  70, "reload":  3, "bulletSpeed": 300, "cost":  80, "splash":  0}],
+  "crossbowTower": [{"lvl":  1, "range":  150, "dmg":  15, "reload":  1, "bulletSpeed": 500, "cost":  150, "splash":  0}, {"lvl":  2, "range":  175, "dmg":  20, "reload":  1, "bulletSpeed": 500, "cost":  70, "splash":  0},{"lvl":  3, "range":  200, "dmg":  25, "reload":  1, "bulletSpeed": 500, "cost":  150, "splash":  0}],
+  "mageTower": [{"lvl":  1, "range":  180, "dmg":  80, "reload":  4, "bulletSpeed": 300, "cost":  400, "splash":  0}, {"lvl":  2, "range":  210, "dmg":  100, "reload":  3.5, "bulletSpeed": 300, "cost":  200, "splash":  0},{"lvl":  3, "range":  240, "dmg":  120, "reload":  3, "bulletSpeed": 300, "cost":  300, "splash":  0}],
+  "cannonTower": [{"lvl":  1, "range":  300, "dmg":  100, "reload":  8, "bulletSpeed": 200, "cost":  600, "splash":  64}, {"lvl":  2, "range":  325, "dmg":  120, "reload":  8, "bulletSpeed": 300, "cost":  500, "splash":  92},{"lvl":  3, "range":  350, "dmg":  130, "reload":  7, "bulletSpeed": 300, "cost":  600, "splash":  128}],
+  "roadSticky": {"name": "roadSticky", "slow": 0.5, "uses": 10, "cost": 75 },
+  "roadNeedles": {"name": "roadNeedles", "dmg":  25, "uses": 10, "cost": 50 }
+}

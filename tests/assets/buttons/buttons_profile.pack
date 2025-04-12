@@ -1,0 +1,40 @@
+
+buttons_profile.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+new_profile_button_down
+  rotate: false
+  xy: 1, 1
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+new_profile_button_up
+  rotate: false
+  xy: 131, 1
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+next_screen_button
+  rotate: false
+  xy: 261, 1
+  size: 64, 128
+  orig: 64, 128
+  offset: 0, 0
+  index: -1
+previous_screen_button
+  rotate: false
+  xy: 327, 1
+  size: 64, 128
+  orig: 64, 128
+  offset: 0, 0
+  index: -1
+previous_screen_button
+  rotate: false
+  xy: 327, 1
+  size: 64, 128
+  orig: 64, 128
+  offset: 0, 0
+  index: -1

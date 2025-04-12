@@ -1,0 +1,47 @@
+
+statsCover.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+leftStatsCover
+  rotate: false
+  xy: 0, 0
+  size: 92, 24
+  orig: 92, 24
+  offset: 0, 0
+  index: -1
+rightStatsCover
+  rotate: false
+  xy: 92, 0
+  size: 96, 24
+  orig: 92, 24
+  offset: 0, 0
+  index: -1
+middleStatsCover
+  rotate: false
+  xy: 189, 0
+  size: 14, 24
+  orig: 14, 24
+  offset: 0, 0
+  index: -1
+emptyStatsCover
+  rotate: false
+  xy: 200, 0
+  size: 92, 24
+  orig: 92, 24
+  offset: 0, 0
+  index: -1
+buttonDown
+  rotate: false
+  xy: 0, 32
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+buttonUp
+  rotate: false
+  xy: 32, 32
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1

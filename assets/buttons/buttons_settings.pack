@@ -1,0 +1,75 @@
+
+buttons_settings.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+empty_background
+  rotate: false
+  xy: 150, 1
+  size: 150, 32
+  orig: 150, 32
+  offset: 0, 0
+  index: -1
+slider_background
+  rotate: false
+  xy: 1, 69
+  size: 500, 32
+  orig: 500, 32
+  offset: 0, 0
+  index: -1
+textBar
+  rotate: false
+  xy: 1, 35
+  size: 320, 32
+  orig: 320, 32
+  offset: 0, 0
+  index: -1
+checkbox_off
+  rotate: false
+  xy: 1, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+checkbox_on
+  rotate: false
+  xy: 323, 35
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+resolutionButtonLeft_down
+  rotate: false
+  xy: 35, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+resolutionButtonLeft_up
+  rotate: false
+  xy: 357, 35
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+resolutionButtonRight_down
+  rotate: false
+  xy: 69, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+resolutionButtonRight_up
+  rotate: false
+  xy: 391, 35
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+slider_knob
+  rotate: false
+  xy: 103, 1
+  size: 16, 32
+  orig: 16, 32
+  offset: 0, 0
+  index: -1

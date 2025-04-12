@@ -1,0 +1,165 @@
+tipsImages.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+warrior
+  rotate: false
+  xy: 0, 0
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+assassin
+  rotate: false
+  xy: 80, 0
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+incubus
+  rotate: false
+  xy: 160, 0
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+blob
+  rotate: false
+  xy: 240, 0
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+summoner
+  rotate: false
+  xy: 320, 0
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+gladiator
+  rotate: false
+  xy: 400, 0
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+melee
+  rotate: false
+  xy: 480, 0
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+crossbow
+  rotate: false
+  xy: 560, 0
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+mage
+  rotate: false
+  xy: 640, 0
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+cannon
+  rotate: false
+  xy: 720, 0
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+sticky
+  rotate: false
+  xy: 800, 0
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+needles
+  rotate: false
+  xy: 880, 0
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+separator
+  rotate: false
+  xy: 0, 80
+  size: 1280, 16
+  orig: 1280, 16
+  offset: 0, 0
+  index: -1
+objectSeparatorLeft
+  rotate: false
+  xy: 0, 96
+  size: 1280, 4
+  orig: 1280, 4
+  offset: 0, 0
+  index: -1
+objectSeparatorRight
+  rotate: false
+  xy: 0, 104
+  size: 1280, 4
+  orig: 1280, 4
+  offset: 0, 0
+  index: -1
+ mechanics_up
+   rotate: false
+   xy: 0, 120
+   size: 170, 100
+   orig: 170, 100
+   offset: 0, 0
+   index: -1
+  mechanics_down
+    rotate: false
+    xy: 170, 120
+    size: 170, 100
+    orig: 170, 100
+    offset: 0, 0
+    index: -1
+ enemies_up
+   rotate: false
+   xy: 340, 120
+   size: 170, 100
+   orig: 170, 100
+   offset: 0, 0
+   index: -1
+  enemies_down
+    rotate: false
+    xy: 510, 120
+    size: 170, 100
+    orig: 170, 100
+    offset: 0, 0
+    index: -1
+ towers_up
+    rotate: false
+    xy: 0, 220
+    size: 170, 100
+    orig: 170, 100
+    offset: 0, 0
+    index: -1
+   towers_down
+     rotate: false
+     xy: 170, 220
+     size: 170, 100
+     orig: 170, 100
+     offset: 0, 0
+     index: -1
+  back_up
+    rotate: false
+    xy: 340, 220
+    size: 170, 100
+    orig: 170, 100
+    offset: 0, 0
+    index: -1
+   back_down
+     rotate: false
+     xy: 510, 220
+     size: 170, 100
+     orig: 170, 100
+     offset: 0, 0
+     index: -1

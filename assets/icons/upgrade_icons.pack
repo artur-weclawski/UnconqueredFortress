@@ -1,0 +1,264 @@
+
+upgrade_icons.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: xy
+upgradeIcons_attackBattleAxe
+  rotate: false
+  xy: 0, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_attackBetterCannon
+  rotate: false
+  xy: 0, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_attackBook
+  rotate: false
+  xy: 52, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_attackBow
+  rotate: false
+  xy: 52, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_attackCannon
+  rotate: false
+  xy: 104, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_attackCannonBall
+  rotate: false
+  xy: 104, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_attackCrossbow
+  rotate: false
+  xy: 156, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_attackDagger
+  rotate: false
+  xy: 156, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_attackFork
+  rotate: false
+  xy: 208, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_attackGear
+  rotate: false
+  xy: 208, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_attackMace
+  rotate: false
+  xy: 260, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_attackSceptre
+  rotate: false
+  xy: 260, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_attackScythe
+  rotate: false
+  xy: 312, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_attackSonar
+  rotate: false
+  xy: 312, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_attackSword
+  rotate: false
+  xy: 364, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_background
+  rotate: false
+  xy: 364, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_bought
+  rotate: false
+  xy: 416, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_healthBetterBetterHealth
+  rotate: false
+  xy: 416, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_healthBetterHealth
+  rotate: false
+  xy: 468, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_healthHealth
+  rotate: false
+  xy: 468, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_healthRegen
+  rotate: false
+  xy: 520, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_healthShield
+  rotate: false
+  xy: 520, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_incomeBetterDiamonds
+  rotate: false
+  xy: 572, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_incomeBetterGold
+  rotate: false
+  xy: 572, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_incomeBetterUpgrade
+  rotate: false
+  xy: 624, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_incomeDiamonds
+  rotate: false
+  xy: 624, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_incomeDiscountTen
+  rotate: false
+  xy: 676, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_incomeDiscountThirty
+  rotate: false
+  xy: 676, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_incomeDiscountTwenty
+  rotate: false
+  xy: 728, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_incomeGold
+  rotate: false
+  xy: 728, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_incomeHammer
+  rotate: false
+  xy: 780, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_incomeLuck
+  rotate: false
+  xy: 780, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_incomeUpgrade
+  rotate: false
+  xy: 832, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_lock
+  rotate: false
+  xy: 832, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+upgradeIcons_connect
+  rotate: false
+  xy: 884, 76
+  size: 48, 24
+  orig: 48, 48
+  offset: 0, 12
+  index: -1
+upgradeIcons_connectVertical
+  rotate: false
+  xy: 884, 24
+  size: 24, 48
+  orig: 48, 48
+  offset: 12, 0
+  index: -1
+upgradeIcons_empty
+ rotate: false
+ xy: 932, 24
+ size: 48, 48
+ orig: 48, 48
+ offset: 0, 0
+ index: -1

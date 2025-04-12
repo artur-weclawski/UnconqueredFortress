@@ -1,0 +1,11 @@
+{
+  "spawnRate": {"warrior": 40, "blob": 20, "assassin": 20, "flying": 15, "summoner": 5},
+  "spawnWave": {"warrior": 1, "blob": 2, "assassin": 6, "flying": 11, "summoner": 21},
+  "assassin" : {"name": "assassin", "dodgeChance": 20, "health":  80, "damage": 10, "money": 12, "diamonds": 0, "speed": 200, "isFlying": false},
+  "flying" : {"name": "flying", "health":  110, "damage": 15, "money": 6, "diamonds": 0, "speed": 125, "isFlying": true},
+  "boss" : {"name": "boss", "health":  500, "damage": 50, "money": 100, "diamonds": 5, "speed": 50, "isFlying": false},
+  "summoner" : {"name": "summoner", "delayBetweenSummonings": 5, "summoningTime": 3, "health":  250, "damage": 20, "money": 25, "diamonds": 2, "speed": 100, "isFlying": false},
+  "warrior" : {"name": "warrior", "health":  100, "damage": 5, "money": 5, "diamonds": 0, "speed": 100, "isFlying": false},
+  "blob" : {"name": "blob", "health":  120, "healthRegen": 1, "regenTime": 1, "damage": 7, "money": 8, "diamonds": 0, "speed": 90, "isFlying": false},
+  "summon" : {"name": "summon", "health":  100, "damage": 5, "money": 0, "diamonds": 0, "speed": 100, "isFlying": false}
+}

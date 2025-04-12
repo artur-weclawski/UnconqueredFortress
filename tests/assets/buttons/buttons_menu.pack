@@ -1,0 +1,19 @@
+
+buttons_menu.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+tempmain
+  rotate: false
+  xy: 1, 1
+  size: 385, 80
+  orig: 385, 80
+  offset: 0, 0
+  index: -1
+tempmainlog
+  rotate: false
+  xy: 388, 1
+  size: 297, 80
+  orig: 297, 80
+  offset: 0, 0
+  index: -1
